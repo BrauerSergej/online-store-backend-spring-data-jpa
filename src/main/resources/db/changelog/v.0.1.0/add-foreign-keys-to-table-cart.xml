@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="add-foreign-keys-to-table-cart" author="Sergej Brauer">
+        <!--    foreign key - внешний ключ-->
+        <addForeignKeyConstraint baseTableName="cart"
+                                 baseColumnNames="customer_id"
+                                 constraintName="fk_cart_to_customer"
+                                 referencedTableName="customer"
+                                 referencedColumnNames="id"/>
+        <!-- РАЗБОР АТРИБУТОВ:
+                     1. baseTableName: Из какой таблицы ссылаемся (где создаем ключ). У нас это 'cart'.
+                     2. baseColumnNames: На какую колонку вешаем ключ? Здесь это 'customer_id' в таблице 'cart'.
+                     3. referencedTableName: На какую таблицу этот ключ ссылается? На таблицу 'customer'.
+                     4. referencedColumnNames: На какую именно колонку в таблице 'customer' мы смотрим? На её 'id'.
+                     5. constraintName: Имя ключа, которое мы придумали сами. Оно должно быть УНИКАЛЬНЫМ во всей базе.
+                        Название 'fk_position_to_customer' сразу говорит нам: связь от Cart к Customer. -->
+    </changeSet>
+</databaseChangeLog>

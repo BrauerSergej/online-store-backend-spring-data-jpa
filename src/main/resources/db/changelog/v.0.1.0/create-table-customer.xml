@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+<!--    Change set – это какое-то одно изменение в базе. У тега change set есть атрибут ID.
+Это уникальный идентификатор самого вот этого вот действия. И обычно я выбираю идентификатор
+такой, который называется так же, как файл, только без расширения. Нужно очень внимательно
+следить, чтобы эти идентификаторы были уникальными. Поэтому, чтобы точно гарантированно
+не повториться, я пишу такой идентификатор, как само название файла, только без расширения.-->
+    <changeSet id="create-table-customer" author="Sergej Brauer">
+       <createTable tableName="customer">
+<!--           При помощи атрибута name мы указываем имя колонки, тип колонки, так как ID это
+у нас лонг в коде, но в базе данных нет такого типа, как лонг. Есть тип, который называется bigint,
+большой инт. По сути, лонг это и есть большой инт, правильно? Ведь у нас инт — это целое число,
+оно занимает 4 байта, а лонг — это тоже целое число, но оно занимает 8 байт. Это большой инт.
+И вот в базе данных тип так и называется bigint. Дальше. Атрибут auto_increment говорит о том,
+что у нас идентификатор автоматически инкрементируемый, то есть сама база данных будет увеличивать
+идентификаторы, когда мы будем туда добавлять каких-то клиентов.-->
+           <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+           </column>
+<!--Вот здесь мы создаем колонку title. Это название продукта. Тип у нее varchar.
+Varchar — это от слова variable и character, то есть переменное количество символов.
+Это просто символьный тип данных, строковый тип данных, даже если быть точнее.
+Он, в общем-то, соответствует типу string в Java. То это максимальное ограничение.
+То есть больше, название продукта больше 100 символов в эту колонку записать не получится.-->
+           <column name="name" type="varchar(50)">
+<!-- Указываем что имя не должно быть уникальным, атрибут nullable со значением false говорит о том,
+что нельзя оставлять пустым значение в этой колонке.-->
+               <constraints unique="false" nullable="false"/>
+           </column>
+
+           <column name="active" type="boolean" defaultValue="true">
+               <constraints unique="false" nullable="false"/>
+           </column>
+       </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <include file="create-table-product.xml" relativeToChangelogFile="true"/>
+    <include file="create-table-position.xml" relativeToChangelogFile="true"/>
+    <include file="create-table-customer.xml" relativeToChangelogFile="true"/>
+    <include file="create-table-cart.xml" relativeToChangelogFile="true"/>
+
+    <include file="add-foreign-keys-to-table-position.xml" relativeToChangelogFile="true"/>
+    <include file="add-foreign-keys-to-table-cart.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>
+<!-- Скрипты миграции -->
+<!-- Changelog содержит одно минимальное действие с БД (например: создать таблицу,-->
+<!-- добавить колонку или настроить внешний ключ). Это позволяет обновлять базу-->
+<!-- постепенно, не переписывая её целиком при каждом изменении.-->

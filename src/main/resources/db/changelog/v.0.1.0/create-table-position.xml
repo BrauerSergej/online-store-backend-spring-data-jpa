@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- changeSet: уникальный блок миграции для создания таблицы позиций -->
+    <changeSet id="create-table-position" author="Andrey Pomelov">
+
+        <!-- createTable: создаем таблицу с именем "position" (позиция в корзине) -->
+        <createTable tableName="position">
+
+            <!-- id: уникальный номер самой записи в этой таблице -->
+            <column name="id" type="bigint" autoIncrement="true">
+                <!-- constraints — ограничения: здесь это первичный ключ (уникальный идентификатор строки) -->
+                <constraints primaryKey="true"/>
+            </column>
+
+            <!-- cart_id: ID корзины, к которой относится этот товар.
+                 Пока это просто число, связь (ForeignKey) будет настроена позже -->
+            <column name="cart_id" type="bigint">
+                <constraints unique="false" nullable="false"/>
+            </column>
+
+            <!-- product_id: ID товара, который лежит в этой корзине -->
+            <column name="product_id" type="bigint">
+                <constraints unique="false" nullable="false"/>
+            </column>
+
+            <!-- quantity: количество данного товара (например, 3 штуки) -->
+            <column name="quantity" type="int">
+                <constraints unique="false" nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

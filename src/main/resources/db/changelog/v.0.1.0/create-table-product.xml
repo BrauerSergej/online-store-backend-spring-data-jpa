@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- changeSet — это то самое «минимальное действие» (миграция).
+         id — уникальное имя задачи, author — кто её написал. По этим полям Liquibase поймет, что этот скрипт уже выполнялся -->
+    <changeSet id="create-table-product" author="Andrey Pomelov">
+        <createTable tableName="product">
+            <!-- Поле ID: тип bigint (большое число), autoIncrement — база сама будет увеличивать идентификатор при новой записи -->
+            <column name="id" type="bigint" autoIncrement="true">
+                <!-- constraints — ограничения: здесь это первичный ключ (уникальный идентификатор строки) -->
+                <constraints primaryKey="true"/>
+            </column>
+            <!-- Поле названия (title): тип varchar(100) — строка до 100 символов -->
+            <column name="title" type="varchar(100)">
+                <!-- unique="true" (уникальное - название продукта), nullable="false" (не может быть пустым) -->
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <!-- Поле цены (price): тип decimal(7,2) — число с точкой (всего 7 цифр, 2 из них после запятой) -->
+            <!-- defaultValue="0" — если цену не указали, она автоматически станет 0 -->
+            <column name="price" type="decimal(7,2)" defaultValue="0">
+                <!-- nullable="false" (не может быть пустым)-->
+                <constraints unique="false" nullable="false"/>
+            </column>
+            <!-- Поле активности (active): тип boolean (да/нет) -->
+            <column name="active" type="boolean" defaultValue="true">
+                <!-- defaultValue="true" — по умолчанию товар считается активным -->
+                <constraints unique="false" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

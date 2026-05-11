@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!-- Как вообще внешний ключ был создан? Внешний ключ был создан при помощи вот этого вот ченджлога,
+    который называется Add the foreign keys to table position, то есть добавить внешние ключи на таблицу position.-->
+    <changeSet id="add-foreign-keys-to-table-position" author="Andrey Pomelov">
+        <!--        Здесь есть такой тег, который называется AddForeignKeyConstraint, и у которого есть 5 атрибутов. -->
+        <!--        Вот эти атрибуты как раз-таки и указывают, смотрите, BaseTableName указывает, из какой таблицы мы -->
+        <!--        будем ссылаться на другую таблицу или в какой таблице мы создаем внешний ключ. Дальше. На какую -->
+        <!--        именно колонку вешается внешний ключ? И получается, что внешний ключ вешается на колонку productID -->
+        <!--        таблицы Position. Дальше. Вот этот атрибут говорит, что этот внешний ключ ссылается на таблицу -->
+        <!--        Product и ее колонку, которая называется ID. А вот этот вот атрибут ConstraintName – -->
+        <!--        это просто имя ключа, которое мы придумываем сами, и нам надо следить за тем, чтобы в -->
+        <!--        пределах базы у нас имена ключей не повторялись. Это очень важно, это обязательно. -->
+        <!--        И я просто придумал название ключа FK position to product, то есть внешний ключ из таблицы -->
+        <!--        Position на таблицу Product.-->
+        <addForeignKeyConstraint baseTableName="position"
+                                 baseColumnNames="product_id"
+                                 constraintName="fk_position_to_product"
+                                 referencedTableName="product"
+                                 referencedColumnNames="id"/>
+        <!--        referencedTableName - имя таблицы, на которую есть ссылка-->
+        <addForeignKeyConstraint baseTableName="position"
+                                 baseColumnNames="cart_id"
+                                 constraintName="fk_position_to_cart"
+                                 referencedTableName="cart"
+                                 referencedColumnNames="id"/>
+        <!-- РАЗБОР АТРИБУТОВ:
+                     1. baseTableName: Из какой таблицы ссылаемся (где создаем ключ). У нас это 'position'.
+                     2. baseColumnNames: На какую колонку вешаем ключ? Здесь это 'product_id' в таблице 'position'.
+                     3. referencedTableName: На какую таблицу этот ключ ссылается? На таблицу 'product'.
+                     4. referencedColumnNames: На какую именно колонку в таблице 'product' мы смотрим? На её 'id'.
+                     5. constraintName: Имя ключа, которое мы придумали сами. Оно должно быть УНИКАЛЬНЫМ во всей базе.
+                        Название 'fk_position_to_product' сразу говорит нам: связь от Position к Product. -->
+    </changeSet>
+</databaseChangeLog>
