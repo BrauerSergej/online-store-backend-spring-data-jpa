@@ -1,4 +1,3 @@
-```markdown
 # Online Store Backend (Spring Data JPA) 🛒
 
 Educational backend project for an online store, developed with Spring Boot and Spring Data JPA.
