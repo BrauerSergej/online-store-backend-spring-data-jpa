@@ -1,7 +1,9 @@
 package de.ait.g_67_shop.service;
 
 import de.ait.g_67_shop.domain.Customer;
-import de.ait.g_67_shop.domain.Product;
+import de.ait.g_67_shop.dto.customer.CustomerDto;
+import de.ait.g_67_shop.dto.customer.CustomerSaveDto;
+import de.ait.g_67_shop.dto.customer.CustomerUpdateDto;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,16 +11,17 @@ import java.util.List;
 public interface CustomerService {
 
     // * Сохранить покупателя в базе данных (при сохранении покупатель автоматически считается активным).
-    Customer save(Customer customer);
+    CustomerDto save(CustomerSaveDto saveDto);
 
     // * Вернуть всех покупателей из базы данных (активных).
-    List<Customer> getAllActiveCustomers();
+    List<CustomerDto> getAllActiveCustomers();
 
     // * Вернуть одного покупателя из базы данных по его идентификатору (если он активен).
-    Customer getActiveCustomerById(Long id);
+    CustomerDto getActiveCustomerById(Long id);
+    Customer getActiveEntityById(Long id);
 
     // * Изменить одного покупателя в базе данных по его идентификатору.
-    void update(Long id, Customer customer);
+    void update(Long id, CustomerUpdateDto updateDto);
 
     // * Удалить покупателя из базы данных по его идентификатору.
     void deleteById(Long id);

@@ -1,6 +1,10 @@
 package de.ait.g_67_shop.service;
 
 import de.ait.g_67_shop.domain.Product;
+import de.ait.g_67_shop.dto.mapping.ProductMapper;
+import de.ait.g_67_shop.dto.product.ProductDto;
+import de.ait.g_67_shop.dto.product.ProductSaveDto;
+import de.ait.g_67_shop.dto.product.ProductUpdateDto;
 import de.ait.g_67_shop.repository.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -23,32 +27,44 @@ public class ProductServiceImpl implements ProductService {
     // Это связь с репозиторием
     private final ProductRepository repository;
 
+    private final ProductMapper mapper;
+
     // ProductServiceImpl обращается к ProductRepository
-    public ProductServiceImpl(ProductRepository repository) {
+    public ProductServiceImpl(ProductRepository repository, ProductMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
+    @Transactional
     // Этот метод будет вызваться в ProductController
-    public Product save(Product product) {
-        // Делаем продукт активным
-        product.setActive(true);
-        // Методы технологии Spring Data JPA (save)
-        // Метод save сам сохранит продукт в базу данных и присвоит тот ID
-        // который присвоила база данных в результате мы возвращаем продукт
-        // с присвоенным идентификатором
-        return repository.save(product);
+    public ProductDto save(ProductSaveDto saveDto) {
+        Product entity = mapper.mapDtoToEntity(saveDto);
+        entity.setActive(true);
+        repository.save(entity);
+        return mapper.mapEntityToDto(entity);
     }
 
 
     @Override
-    public List<Product> getAllActiveProducts() {
-        // Более эффективный способ мы можем сразу из базы запросить только активные продукты
-        return repository.findAllByActiveTrue();
+    public List<ProductDto> getAllActiveProducts() {
+        List<Product> entities = repository.findAllByActiveTrue();
+        return mapper.mapEntitiesToDto(entities);
+        // Решение номер 1
+//        return repository.findAllByActiveTrue()
+//                .stream()
+//                .map(mapper::mapEntityToDto)
+//                .toList();
     }
 
     @Override
-    public Product getActiveProductById(Long id) {
+    public ProductDto getActiveProductById(Long id) {
+        Product product = getActiveEntityById(id);
+        return mapper.mapEntityToDto(product);
+    }
+
+    @Override
+    public Product getActiveEntityById(Long id) {
         return repository.findByIdAndActiveTrue(id).orElseThrow(
                 // Временная обработка ошибки до тех пор, пока
                 // не изучим соответствующую тему
@@ -58,8 +74,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public void update(Long id, Product product) {
-        BigDecimal newPrice = product.getPrice();
+    public void update(Long id, ProductUpdateDto updateDto) {
+        BigDecimal newPrice = updateDto.getNewPrice();
         repository.findById(id).ifPresent(x -> x.setPrice(newPrice));
     }
 
@@ -79,10 +95,11 @@ public class ProductServiceImpl implements ProductService {
     public int getAllActiveProductsCount() {
         return repository.countByActiveTrue();
     }
+
     //    • Вернуть суммарную стоимость всех продуктов в базе данных (активных).
     @Override
     public BigDecimal getAllActiveProductsTotalCost() {
-        return getAllActiveProducts()
+        return repository.findAllByActiveTrue()
                 .stream()
                 .map(Product::getPrice)
                 .reduce(BigDecimal::add)
