@@ -3,6 +3,10 @@ package de.ait.g_67_shop.service;
 import de.ait.g_67_shop.domain.Customer;
 import de.ait.g_67_shop.domain.Position;
 import de.ait.g_67_shop.domain.Product;
+import de.ait.g_67_shop.dto.customer.CustomerDto;
+import de.ait.g_67_shop.dto.customer.CustomerSaveDto;
+import de.ait.g_67_shop.dto.customer.CustomerUpdateDto;
+import de.ait.g_67_shop.dto.mapping.CustomerMapper;
 import de.ait.g_67_shop.repository.CustomerRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -19,35 +23,40 @@ public class CustomerServiceImpl implements CustomerService {
     // Через неё CustomerServiceImpl будет работать с покупателями в базе данных.
     private final CustomerRepository repository;
     private final ProductService productService;
+    private final CustomerMapper mapper;
 
-    public CustomerServiceImpl(CustomerRepository repository, ProductService productService) {
+    public CustomerServiceImpl(CustomerRepository repository, ProductService productService, CustomerMapper mapper) {
         this.repository = repository;
         this.productService = productService;
+        this.mapper = mapper;
     }
 
     @Override
     // Этот метод будет вызваться в CustomerController
     // При сохранении покупатель автоматически считается активным.
-    public Customer save(Customer customer) {
-        // Делаем клиента активным
-        customer.setActive(true);
-        // Методы технологии Spring Data JPA (save)
-        // Метод save сам сохранит клиента в базу данных и присвоит тот ID
-        // который присвоила база данных в результате мы возвращаем клиента
-        // с присвоенным идентификатором
-        return repository.save(customer);
+    public CustomerDto save(CustomerSaveDto saveDto) {
+        Customer entity = mapper.mapDtoToEntity(saveDto);
+        entity.setActive(true);
+        repository.save(entity);
+        return mapper.mapEntityToDto(entity);
     }
 
     // Вернуть всех активных покупателей.
     @Override
-    public List<Customer> getAllActiveCustomers() {
-        // Более эффективный способ мы можем сразу из базы запросить только активные продукты
-        return repository.findAllByActiveTrue();
+    public List<CustomerDto> getAllActiveCustomers() {
+        List<Customer> entities = repository.findAllByActiveTrue();
+        return mapper.mapEntitiesToDto(entities);
+    }
+
+    @Override
+    public CustomerDto getActiveCustomerById(Long id){
+        Customer customer = getActiveEntityById(id);
+        return mapper.mapEntityToDto(customer);
     }
 
     // Вернуть одного активного покупателя по id.
     @Override
-    public Customer getActiveCustomerById(Long id) {
+    public Customer getActiveEntityById(Long id) {
         return repository.findByIdAndActiveTrue(id).orElseThrow(
                 // Временная обработка ошибки до тех пор, пока
                 // не изучим соответствующую тему
@@ -60,8 +69,8 @@ public class CustomerServiceImpl implements CustomerService {
     // находиться в состоянии Managed, управляемом. А значит, когда мы засетим ему новую цену,
     // технология Spring Data JPA эти изменения отразит ещё и в базе данных, а не только в самом Java-объекте.
     // Изменить одного покупателя по id.
-    public void update(Long id, Customer customer) {
-        String newName = customer.getName();
+    public void update(Long id, CustomerUpdateDto updateDto) {
+        String newName = updateDto.getName();
         repository.findById(id).ifPresent(x -> x.setName(newName));
     }
 
@@ -87,7 +96,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional
     public BigDecimal getActiveCustomerCartTotalCostById(Long id) {
-        Customer customer = getActiveCustomerById(id);
+        CustomerDto customer = getActiveCustomerById(id);
 
         if (customer == null || customer.getCart() == null || customer.getCart().getPositions().isEmpty()) {
             return BigDecimal.ZERO;
@@ -103,7 +112,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional
     public BigDecimal getAverageProductPriceInCartByCustomerId(Long id) {
-        Customer customer = getActiveCustomerById(id);
+        Customer customer = getActiveEntityById(id);
 
         if (customer == null || customer.getCart() == null || customer.getCart().getPositions().isEmpty()) {
             return BigDecimal.ZERO;
@@ -124,8 +133,8 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional
     public void addProductToCart(Long customerId, Long productId, int quantity) {
-        Customer customer = getActiveCustomerById(customerId);
-        Product product = productService.getActiveProductById(productId);
+        Customer customer = getActiveEntityById(customerId);
+        Product product = productService.getActiveEntityById(productId);
 
         if (customer != null && product != null && customer.getCart() != null) {
             Set<Position> positions = customer.getCart().getPositions();
@@ -154,7 +163,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional
     public void removeProductFromCartById(Long customerId, Long productId, int quantity) {
-        Customer customer = getActiveCustomerById(customerId);
+        Customer customer = getActiveEntityById(customerId);
 
         if (customer != null && customer.getCart() != null) {
             Set<Position> positions = customer.getCart().getPositions();
@@ -179,7 +188,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional
     public void clearCustomerCartById(Long id) {
-        Customer customer = getActiveCustomerById(id);
+        Customer customer = getActiveEntityById(id);
 
         if (customer != null && customer.getCart() != null) {
             customer.getCart().getPositions().clear();
