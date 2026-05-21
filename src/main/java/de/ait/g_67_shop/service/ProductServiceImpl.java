@@ -5,8 +5,11 @@ import de.ait.g_67_shop.dto.mapping.ProductMapper;
 import de.ait.g_67_shop.dto.product.ProductDto;
 import de.ait.g_67_shop.dto.product.ProductSaveDto;
 import de.ait.g_67_shop.dto.product.ProductUpdateDto;
+import de.ait.g_67_shop.exception.ProductNotFoundException;
 import de.ait.g_67_shop.repository.ProductRepository;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -22,6 +25,9 @@ import java.util.List;
 // реализовать все методы, которые объявлены в этом интерфейсе.
 // Это связь с интерфейсом
 public class ProductServiceImpl implements ProductService {
+
+    // Содержит объект logger
+    private final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
     // Поле которое содержит объект репозитория - мы можем к нему обращаться
     // Это связь с репозиторием
@@ -42,6 +48,14 @@ public class ProductServiceImpl implements ProductService {
         Product entity = mapper.mapDtoToEntity(saveDto);
         entity.setActive(true);
         repository.save(entity);
+        /*
+        Не всегда стоит целиком логировать весь объект, так как
+        он может быть очень большим.
+        Или этот объект может содержать секреты.
+        Иногда стоит логировать только определенные параметры объекта
+        либо вообще только идентификатор.
+        */
+        logger.info("Product saved to the database: {}", entity);
         return mapper.mapEntityToDto(entity);
     }
 
@@ -68,7 +82,7 @@ public class ProductServiceImpl implements ProductService {
         return repository.findByIdAndActiveTrue(id).orElseThrow(
                 // Временная обработка ошибки до тех пор, пока
                 // не изучим соответствующую тему
-                () -> new IllegalArgumentException("Product not found")
+                () -> new ProductNotFoundException("Product with ID not found: " + id)
         );
     }
 
@@ -76,19 +90,29 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void update(Long id, ProductUpdateDto updateDto) {
         BigDecimal newPrice = updateDto.getNewPrice();
-        repository.findById(id).ifPresent(x -> x.setPrice(newPrice));
+        repository.findById(id).ifPresent(x -> {
+            x.setPrice(newPrice);
+            logger.info("Product id {} updated, new price: {}", id, updateDto.getNewPrice());
+        });
+
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-        repository.findByIdAndActiveTrue(id).ifPresent(x -> x.setActive(false));
+        repository.findByIdAndActiveTrue(id).ifPresent(x -> {
+            x.setActive(false);
+            logger.info("Product id {} marked as inactive", id);
+        });
     }
 
     @Override
     @Transactional
     public void restoreById(Long id) {
-        repository.findById(id).ifPresent(x -> x.setActive(true));
+        repository.findById(id).ifPresent(x -> {
+            x.setActive(true);
+            logger.info("Product id {} marked as active", id);
+        });
     }
 
     @Override

@@ -19,7 +19,8 @@ public class Cart {
     @OneToMany(
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
-            mappedBy = "cart")
+            mappedBy = "cart",
+            orphanRemoval = true)
     private Set<Position> positions = new HashSet<>();
 
     @OneToOne

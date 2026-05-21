@@ -1,0 +1,920 @@
+2026-05-20T19:16:12.235+02:00  INFO 26876 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Starting ProductControllerTestIT using Java 17.0.16 with PID 26876 (started by bmw73 in C:\IdeaProjects\g_67_shop)
+2026-05-20T19:16:12.244+02:00 DEBUG 26876 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-05-20T19:16:12.244+02:00  INFO 26876 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : No active profile set, falling back to 1 default profile: "default"
+2026-05-20T19:16:13.148+02:00  INFO 26876 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-20T19:16:13.231+02:00  INFO 26876 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 2 JPA repository interfaces.
+2026-05-20T19:16:14.089+02:00  INFO 26876 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-05-20T19:16:14.107+02:00  INFO 26876 --- [g_67_shop] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-20T19:16:14.108+02:00  INFO 26876 --- [g_67_shop] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-05-20T19:16:14.214+02:00  INFO 26876 --- [g_67_shop] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-20T19:16:14.214+02:00  INFO 26876 --- [g_67_shop] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1946 ms
+2026-05-20T19:16:14.435+02:00  INFO 26876 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-20T19:16:14.448+02:00  WARN 26876 --- [g_67_shop] [main] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${DB_PORT}
+2026-05-20T19:16:14.449+02:00  WARN 26876 --- [g_67_shop] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+2026-05-20T19:16:14.455+02:00  INFO 26876 --- [g_67_shop] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-05-20T19:16:14.492+02:00  INFO 26876 --- [g_67_shop] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-05-20T19:16:14.515+02:00 ERROR 26876 --- [g_67_shop] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:328) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:974) ~[spring-context-6.2.18.jar:6.2.18]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:628) ~[spring-context-6.2.18.jar:6.2.18]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.14.jar:3.5.14]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.14.jar:3.5.14]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.14.jar:3.5.14]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.14.jar:3.5.14]
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:151) ~[spring-boot-test-3.5.14.jar:3.5.14]
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58) ~[spring-core-6.2.18.jar:6.2.18]
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46) ~[spring-core-6.2.18.jar:6.2.18]
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1461) ~[spring-boot-3.5.14.jar:3.5.14]
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:590) ~[spring-boot-test-3.5.14.jar:3.5.14]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:151) ~[spring-boot-test-3.5.14.jar:3.5.14]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:110) ~[spring-boot-test-3.5.14.jar:3.5.14]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:155) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:111) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:159) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$10(ClassBasedTestDescriptor.java:383) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:388) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$11(ClassBasedTestDescriptor.java:382) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:382) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$6(ClassBasedTestDescriptor.java:293) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:292) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$4(ClassBasedTestDescriptor.java:281) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at java.base/java.util.Optional.orElseGet(Optional.java:364) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$5(ClassBasedTestDescriptor.java:280) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:27) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:112) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:111) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$2(NodeTestTask.java:128) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:128) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$1(InterceptingLauncher.java:39) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:38) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at com.intellij.junit5.JUnit5TestRunnerHelper.execute(JUnit5TestRunnerHelper.java:134) ~[junit5-rt.jar:na]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:70) ~[junit5-rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11) ~[idea_rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:244) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:65) ~[junit-rt.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-6.2.18.jar:6.2.18]
+	... 95 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:288) ~[liquibase-core-4.31.1.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.18.jar:6.2.18]
+	... 102 common frames omitted
+Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+	at com.zaxxer.hikari.util.DriverDataSource.<init>(DriverDataSource.java:116) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.initializeDataSource(PoolBase.java:333) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.<init>(PoolBase.java:118) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:90) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-6.3.3.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:275) ~[liquibase-core-4.31.1.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:201) ~[liquibase-core-4.31.1.jar:na]
+	at liquibase.Scope.child(Scope.java:210) ~[liquibase-core-4.31.1.jar:na]
+	at liquibase.Scope.child(Scope.java:200) ~[liquibase-core-4.31.1.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.31.1.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:271) ~[liquibase-core-4.31.1.jar:na]
+	... 104 common frames omitted
+
+2026-05-20T19:16:14.527+02:00  WARN 26876 --- [g_67_shop] [main] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener] to prepare test instance [de.ait.g_67_shop.controller.ProductControllerTestIT@1aac0a47]
+
+java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@64ec1459 testClass = de.ait.g_67_shop.controller.ProductControllerTestIT, locations = [], classes = [de.ait.g_67_shop.G67ShopApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true", "server.port=0"], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@28194a50, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2ad48653, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@238d68ff, org.springframework.boot.test.web.reactor.netty.DisableReactorResourceFactoryGlobalResourcesContextCustomizerFactory$DisableReactorResourceFactoryGlobalResourcesContextCustomizerCustomizer@776a6d9b, org.springframework.boot.test.autoconfigure.OnFailureConditionReportContextCustomizerFactory$OnFailureConditionReportContextCustomizer@18ece7f4, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@2f666ebb, org.springframework.test.context.support.DynamicPropertiesContextCustomizer@0, org.springframework.boot.test.context.SpringBootTestAnnotation@ea9ec83d], resourceBasePath = "src/main/webapp", contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:180) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:155) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:111) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:159) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$10(ClassBasedTestDescriptor.java:383) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:388) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$11(ClassBasedTestDescriptor.java:382) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:382) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$6(ClassBasedTestDescriptor.java:293) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:292) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$4(ClassBasedTestDescriptor.java:281) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at java.base/java.util.Optional.orElseGet(Optional.java:364) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$5(ClassBasedTestDescriptor.java:280) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:27) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:112) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:111) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.12.2.jar:5.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$2(NodeTestTask.java:128) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:128) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$1(InterceptingLauncher.java:39) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:38) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63) ~[junit-platform-launcher-1.12.2.jar:1.12.2]
+	at com.intellij.junit5.JUnit5TestRunnerHelper.execute(JUnit5TestRunnerHelper.java:134) ~[junit5-rt.jar:na]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:70) ~[junit5-rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11) ~[idea_rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:244) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:65) ~[junit-rt.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:328) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:974) ~[spring-context-6.2.18.jar:6.2.18]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:628) ~[spring-context-6.2.18.jar:6.2.18]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.14.jar:3.5.14]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.14.jar:3.5.14]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.14.jar:3.5.14]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.14.jar:3.5.14]
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:151) ~[spring-boot-test-3.5.14.jar:3.5.14]
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58) ~[spring-core-6.2.18.jar:6.2.18]
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46) ~[spring-core-6.2.18.jar:6.2.18]
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1461) ~[spring-boot-3.5.14.jar:3.5.14]
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:590) ~[spring-boot-test-3.5.14.jar:3.5.14]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:151) ~[spring-boot-test-3.5.14.jar:3.5.14]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:110) ~[spring-boot-test-3.5.14.jar:3.5.14]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225) ~[spring-test-6.2.18.jar:6.2.18]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152) ~[spring-test-6.2.18.jar:6.2.18]
+	... 79 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-6.2.18.jar:6.2.18]
+	... 95 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:288) ~[liquibase-core-4.31.1.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.18.jar:6.2.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.18.jar:6.2.18]
+	... 102 common frames omitted
+Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+	at com.zaxxer.hikari.util.DriverDataSource.<init>(DriverDataSource.java:116) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.initializeDataSource(PoolBase.java:333) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.<init>(PoolBase.java:118) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:90) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-6.3.3.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:275) ~[liquibase-core-4.31.1.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:201) ~[liquibase-core-4.31.1.jar:na]
+	at liquibase.Scope.child(Scope.java:210) ~[liquibase-core-4.31.1.jar:na]
+	at liquibase.Scope.child(Scope.java:200) ~[liquibase-core-4.31.1.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.31.1.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:271) ~[liquibase-core-4.31.1.jar:na]
+	... 104 common frames omitted
+
+2026-05-20T19:21:52.951+02:00  INFO 37448 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Starting ProductControllerTestIT using Java 17.0.16 with PID 37448 (started by bmw73 in C:\IdeaProjects\g_67_shop)
+2026-05-20T19:21:52.952+02:00 DEBUG 37448 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-05-20T19:21:52.952+02:00  INFO 37448 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : The following 1 profile is active: "test"
+2026-05-20T19:21:53.671+02:00  INFO 37448 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-20T19:21:53.746+02:00  INFO 37448 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 2 JPA repository interfaces.
+2026-05-20T19:21:54.518+02:00  INFO 37448 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-05-20T19:21:54.536+02:00  INFO 37448 --- [g_67_shop] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-20T19:21:54.536+02:00  INFO 37448 --- [g_67_shop] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-05-20T19:21:54.633+02:00  INFO 37448 --- [g_67_shop] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-20T19:21:54.633+02:00  INFO 37448 --- [g_67_shop] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1665 ms
+2026-05-20T19:21:54.826+02:00  INFO 37448 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-20T19:21:55.082+02:00  INFO 37448 --- [g_67_shop] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-05-20T19:21:55.083+02:00  INFO 37448 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-20T19:21:55.165+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.database                       : Set default schema name to PUBLIC
+2026-05-20T19:21:55.668+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : Creating database history table with name: PUBLIC.DATABASECHANGELOG
+2026-05-20T19:21:55.768+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T19:21:55.838+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.snapshot                       : Creating snapshot
+2026-05-20T19:21:55.941+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2026-05-20T19:21:55.943+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.command                        : Using deploymentId: 9297714806
+2026-05-20T19:21:55.945+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T19:21:55.970+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov
+2026-05-20T19:21:55.982+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : Table product created
+2026-05-20T19:21:55.982+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov ran successfully in 10ms
+2026-05-20T19:21:55.990+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov
+2026-05-20T19:21:55.993+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : Table position created
+2026-05-20T19:21:55.993+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov ran successfully in 3ms
+2026-05-20T19:21:55.996+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer
+2026-05-20T19:21:55.998+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : Table customer created
+2026-05-20T19:21:55.999+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer ran successfully in 2ms
+2026-05-20T19:21:56.001+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer
+2026-05-20T19:21:56.003+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : Table cart created
+2026-05-20T19:21:56.003+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer ran successfully in 2ms
+2026-05-20T19:21:56.006+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov
+2026-05-20T19:21:56.012+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (product_id)
+2026-05-20T19:21:56.014+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (cart_id)
+2026-05-20T19:21:56.015+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov ran successfully in 9ms
+2026-05-20T19:21:56.017+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer
+2026-05-20T19:21:56.019+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to cart (customer_id)
+2026-05-20T19:21:56.019+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer ran successfully in 1ms
+2026-05-20T19:21:56.026+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.util                           : UPDATE SUMMARY
+2026-05-20T19:21:56.027+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.util                           : Run:                          6
+2026-05-20T19:21:56.027+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.util                           : Previously run:               0
+2026-05-20T19:21:56.027+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.util                           : Filtered out:                 0
+2026-05-20T19:21:56.027+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.util                           : -------------------------------
+2026-05-20T19:21:56.027+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.util                           : Total change sets:            6
+2026-05-20T19:21:56.029+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.util                           : Update summary generated
+2026-05-20T19:21:56.031+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.command                        : Update command completed successfully.
+2026-05-20T19:21:56.031+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 6
+2026-05-20T19:21:56.034+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully released change log lock
+2026-05-20T19:21:56.035+02:00  INFO 37448 --- [g_67_shop] [main] liquibase.command                        : Command execution complete
+2026-05-20T19:21:56.677+02:00  INFO 37448 --- [g_67_shop] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-20T19:21:56.761+02:00  INFO 37448 --- [g_67_shop] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-05-20T19:21:56.811+02:00  INFO 37448 --- [g_67_shop] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-20T19:21:57.168+02:00  INFO 37448 --- [g_67_shop] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-20T19:21:57.263+02:00  INFO 37448 --- [g_67_shop] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-20T19:21:58.233+02:00  INFO 37448 --- [g_67_shop] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-20T19:21:58.236+02:00  INFO 37448 --- [g_67_shop] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T19:21:58.898+02:00  WARN 37448 --- [g_67_shop] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-20T19:21:59.611+02:00  INFO 37448 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 30338 (http) with context path '/'
+2026-05-20T19:21:59.625+02:00  INFO 37448 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Started ProductControllerTestIT in 7.127 seconds (process running for 8.265)
+2026-05-20T19:21:59.627+02:00  WARN 37448 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-05-20T19:21:59.628+02:00  WARN 37448 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-05-20T19:22:00.196+02:00  INFO 37448 --- [g_67_shop] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-20T19:22:00.325+02:00  INFO 37448 --- [g_67_shop] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-05-20T19:22:00.328+02:00  INFO 37448 --- [g_67_shop] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T19:22:00.331+02:00  INFO 37448 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-20T19:22:00.334+02:00  INFO 37448 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-20T20:40:56.675+02:00  INFO 10500 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Starting ProductControllerTestIT using Java 17.0.16 with PID 10500 (started by bmw73 in C:\IdeaProjects\g_67_shop)
+2026-05-20T20:40:56.676+02:00 DEBUG 10500 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-05-20T20:40:56.677+02:00  INFO 10500 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : The following 1 profile is active: "test"
+2026-05-20T20:40:57.525+02:00  INFO 10500 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-20T20:40:57.608+02:00  INFO 10500 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70 ms. Found 2 JPA repository interfaces.
+2026-05-20T20:40:58.477+02:00  INFO 10500 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-05-20T20:40:58.497+02:00  INFO 10500 --- [g_67_shop] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-20T20:40:58.498+02:00  INFO 10500 --- [g_67_shop] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-05-20T20:40:58.602+02:00  INFO 10500 --- [g_67_shop] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-20T20:40:58.603+02:00  INFO 10500 --- [g_67_shop] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1909 ms
+2026-05-20T20:40:58.825+02:00  INFO 10500 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-20T20:40:59.118+02:00  INFO 10500 --- [g_67_shop] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-05-20T20:40:59.121+02:00  INFO 10500 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-20T20:40:59.226+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.database                       : Set default schema name to PUBLIC
+2026-05-20T20:40:59.769+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : Creating database history table with name: PUBLIC.DATABASECHANGELOG
+2026-05-20T20:40:59.875+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T20:40:59.958+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.snapshot                       : Creating snapshot
+2026-05-20T20:41:00.073+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2026-05-20T20:41:00.074+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.command                        : Using deploymentId: 9302458802
+2026-05-20T20:41:00.075+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T20:41:00.103+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov
+2026-05-20T20:41:00.117+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : Table product created
+2026-05-20T20:41:00.118+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov ran successfully in 14ms
+2026-05-20T20:41:00.125+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov
+2026-05-20T20:41:00.127+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : Table position created
+2026-05-20T20:41:00.128+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov ran successfully in 3ms
+2026-05-20T20:41:00.131+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer
+2026-05-20T20:41:00.133+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : Table customer created
+2026-05-20T20:41:00.133+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer ran successfully in 2ms
+2026-05-20T20:41:00.136+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer
+2026-05-20T20:41:00.138+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : Table cart created
+2026-05-20T20:41:00.138+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer ran successfully in 2ms
+2026-05-20T20:41:00.140+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov
+2026-05-20T20:41:00.156+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (product_id)
+2026-05-20T20:41:00.162+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (cart_id)
+2026-05-20T20:41:00.162+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov ran successfully in 22ms
+2026-05-20T20:41:00.164+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer
+2026-05-20T20:41:00.166+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to cart (customer_id)
+2026-05-20T20:41:00.166+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer ran successfully in 2ms
+2026-05-20T20:41:00.175+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.util                           : UPDATE SUMMARY
+2026-05-20T20:41:00.175+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.util                           : Run:                          6
+2026-05-20T20:41:00.175+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.util                           : Previously run:               0
+2026-05-20T20:41:00.176+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.util                           : Filtered out:                 0
+2026-05-20T20:41:00.176+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.util                           : -------------------------------
+2026-05-20T20:41:00.176+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.util                           : Total change sets:            6
+2026-05-20T20:41:00.178+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.util                           : Update summary generated
+2026-05-20T20:41:00.183+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.command                        : Update command completed successfully.
+2026-05-20T20:41:00.183+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 6
+2026-05-20T20:41:00.185+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully released change log lock
+2026-05-20T20:41:00.187+02:00  INFO 10500 --- [g_67_shop] [main] liquibase.command                        : Command execution complete
+2026-05-20T20:41:00.811+02:00  INFO 10500 --- [g_67_shop] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-20T20:41:00.904+02:00  INFO 10500 --- [g_67_shop] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-05-20T20:41:00.957+02:00  INFO 10500 --- [g_67_shop] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-20T20:41:01.323+02:00  INFO 10500 --- [g_67_shop] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-20T20:41:01.424+02:00  INFO 10500 --- [g_67_shop] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-20T20:41:02.376+02:00  INFO 10500 --- [g_67_shop] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-20T20:41:02.378+02:00  INFO 10500 --- [g_67_shop] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T20:41:03.050+02:00  WARN 10500 --- [g_67_shop] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-20T20:41:03.785+02:00  INFO 10500 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 13626 (http) with context path '/'
+2026-05-20T20:41:03.795+02:00  INFO 10500 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Started ProductControllerTestIT in 7.6 seconds (process running for 8.905)
+2026-05-20T20:41:03.799+02:00  WARN 10500 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-05-20T20:41:03.799+02:00  WARN 10500 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-05-20T20:41:04.414+02:00  INFO 10500 --- [g_67_shop] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-20T20:41:04.415+02:00  INFO 10500 --- [g_67_shop] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-20T20:41:04.417+02:00  INFO 10500 --- [g_67_shop] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-05-20T20:41:04.487+02:00 DEBUG 10500 --- [g_67_shop] [http-nio-auto-1-exec-1] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with arguments: [Product save DTO: title - Test product, price - 777,00]
+2026-05-20T20:41:04.569+02:00  INFO 10500 --- [g_67_shop] [http-nio-auto-1-exec-1] d.a.g.service.ProductServiceImpl         : Product saved to the database: Product: id - 1, title - Test product, price - 777,00, active - yes
+2026-05-20T20:41:04.570+02:00 DEBUG 10500 --- [g_67_shop] [http-nio-auto-1-exec-1] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with args [Product save DTO: title - Test product, price - 777,00] returned result: Product DTO: id - 1, title - Test product, price - 777,00
+2026-05-20T20:41:04.658+02:00  INFO 10500 --- [g_67_shop] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-20T20:41:04.798+02:00  INFO 10500 --- [g_67_shop] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-05-20T20:41:04.801+02:00  INFO 10500 --- [g_67_shop] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T20:41:04.804+02:00  INFO 10500 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-20T20:41:04.807+02:00  INFO 10500 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-20T20:43:06.551+02:00  INFO 8664 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Starting ProductControllerTestIT using Java 17.0.16 with PID 8664 (started by bmw73 in C:\IdeaProjects\g_67_shop)
+2026-05-20T20:43:06.552+02:00 DEBUG 8664 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-05-20T20:43:06.552+02:00  INFO 8664 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : The following 1 profile is active: "test"
+2026-05-20T20:43:07.364+02:00  INFO 8664 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-20T20:43:07.447+02:00  INFO 8664 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 2 JPA repository interfaces.
+2026-05-20T20:43:08.230+02:00  INFO 8664 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-05-20T20:43:08.257+02:00  INFO 8664 --- [g_67_shop] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-20T20:43:08.258+02:00  INFO 8664 --- [g_67_shop] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-05-20T20:43:08.348+02:00  INFO 8664 --- [g_67_shop] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-20T20:43:08.349+02:00  INFO 8664 --- [g_67_shop] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1778 ms
+2026-05-20T20:43:08.548+02:00  INFO 8664 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-20T20:43:08.813+02:00  INFO 8664 --- [g_67_shop] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-05-20T20:43:08.815+02:00  INFO 8664 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-20T20:43:08.891+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.database                       : Set default schema name to PUBLIC
+2026-05-20T20:43:09.344+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : Creating database history table with name: PUBLIC.DATABASECHANGELOG
+2026-05-20T20:43:09.437+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T20:43:09.504+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.snapshot                       : Creating snapshot
+2026-05-20T20:43:09.609+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2026-05-20T20:43:09.611+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.command                        : Using deploymentId: 9302588528
+2026-05-20T20:43:09.613+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T20:43:09.636+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov
+2026-05-20T20:43:09.649+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : Table product created
+2026-05-20T20:43:09.651+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov ran successfully in 13ms
+2026-05-20T20:43:09.657+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov
+2026-05-20T20:43:09.660+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : Table position created
+2026-05-20T20:43:09.661+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov ran successfully in 4ms
+2026-05-20T20:43:09.663+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer
+2026-05-20T20:43:09.666+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : Table customer created
+2026-05-20T20:43:09.666+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer ran successfully in 3ms
+2026-05-20T20:43:09.668+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer
+2026-05-20T20:43:09.672+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : Table cart created
+2026-05-20T20:43:09.672+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer ran successfully in 3ms
+2026-05-20T20:43:09.674+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov
+2026-05-20T20:43:09.684+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (product_id)
+2026-05-20T20:43:09.687+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (cart_id)
+2026-05-20T20:43:09.688+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov ran successfully in 13ms
+2026-05-20T20:43:09.692+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer
+2026-05-20T20:43:09.697+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to cart (customer_id)
+2026-05-20T20:43:09.697+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer ran successfully in 3ms
+2026-05-20T20:43:09.705+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.util                           : UPDATE SUMMARY
+2026-05-20T20:43:09.706+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.util                           : Run:                          6
+2026-05-20T20:43:09.706+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.util                           : Previously run:               0
+2026-05-20T20:43:09.706+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.util                           : Filtered out:                 0
+2026-05-20T20:43:09.706+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.util                           : -------------------------------
+2026-05-20T20:43:09.706+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.util                           : Total change sets:            6
+2026-05-20T20:43:09.707+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.util                           : Update summary generated
+2026-05-20T20:43:09.709+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.command                        : Update command completed successfully.
+2026-05-20T20:43:09.711+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 6
+2026-05-20T20:43:09.714+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully released change log lock
+2026-05-20T20:43:09.716+02:00  INFO 8664 --- [g_67_shop] [main] liquibase.command                        : Command execution complete
+2026-05-20T20:43:10.208+02:00  INFO 8664 --- [g_67_shop] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-20T20:43:10.272+02:00  INFO 8664 --- [g_67_shop] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-05-20T20:43:10.314+02:00  INFO 8664 --- [g_67_shop] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-20T20:43:10.632+02:00  INFO 8664 --- [g_67_shop] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-20T20:43:10.714+02:00  INFO 8664 --- [g_67_shop] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-20T20:43:11.595+02:00  INFO 8664 --- [g_67_shop] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-20T20:43:11.597+02:00  INFO 8664 --- [g_67_shop] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T20:43:12.220+02:00  WARN 8664 --- [g_67_shop] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-20T20:43:12.920+02:00  INFO 8664 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 31403 (http) with context path '/'
+2026-05-20T20:43:12.929+02:00  INFO 8664 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Started ProductControllerTestIT in 6.894 seconds (process running for 8.154)
+2026-05-20T20:43:12.932+02:00  WARN 8664 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-05-20T20:43:12.932+02:00  WARN 8664 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-05-20T20:43:13.524+02:00  INFO 8664 --- [g_67_shop] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-20T20:43:13.524+02:00  INFO 8664 --- [g_67_shop] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-20T20:43:13.526+02:00  INFO 8664 --- [g_67_shop] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-05-20T20:43:13.590+02:00 DEBUG 8664 --- [g_67_shop] [http-nio-auto-1-exec-1] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with arguments: [Product save DTO: title - Test product, price - 777,00]
+2026-05-20T20:43:13.660+02:00  INFO 8664 --- [g_67_shop] [http-nio-auto-1-exec-1] d.a.g.service.ProductServiceImpl         : Product saved to the database: Product: id - 1, title - Test product, price - 777,00, active - yes
+2026-05-20T20:43:13.660+02:00 DEBUG 8664 --- [g_67_shop] [http-nio-auto-1-exec-1] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with args [Product save DTO: title - Test product, price - 777,00] returned result: Product DTO: id - 1, title - Test product, price - 777,00
+2026-05-20T20:43:13.872+02:00  INFO 8664 --- [g_67_shop] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-20T20:43:14.006+02:00  INFO 8664 --- [g_67_shop] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-05-20T20:43:14.009+02:00  INFO 8664 --- [g_67_shop] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T20:43:14.012+02:00  INFO 8664 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-20T20:43:14.014+02:00  INFO 8664 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-20T20:45:27.732+02:00  INFO 21384 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Starting ProductControllerTestIT using Java 17.0.16 with PID 21384 (started by bmw73 in C:\IdeaProjects\g_67_shop)
+2026-05-20T20:45:27.734+02:00 DEBUG 21384 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-05-20T20:45:27.734+02:00  INFO 21384 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : The following 1 profile is active: "test"
+2026-05-20T20:45:28.573+02:00  INFO 21384 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-20T20:45:28.643+02:00  INFO 21384 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 2 JPA repository interfaces.
+2026-05-20T20:45:29.408+02:00  INFO 21384 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-05-20T20:45:29.432+02:00  INFO 21384 --- [g_67_shop] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-20T20:45:29.434+02:00  INFO 21384 --- [g_67_shop] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-05-20T20:45:29.510+02:00  INFO 21384 --- [g_67_shop] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-20T20:45:29.510+02:00  INFO 21384 --- [g_67_shop] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1755 ms
+2026-05-20T20:45:29.701+02:00  INFO 21384 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-20T20:45:29.925+02:00  INFO 21384 --- [g_67_shop] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-05-20T20:45:29.929+02:00  INFO 21384 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-20T20:45:30.001+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.database                       : Set default schema name to PUBLIC
+2026-05-20T20:45:30.449+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : Creating database history table with name: PUBLIC.DATABASECHANGELOG
+2026-05-20T20:45:30.541+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T20:45:30.616+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.snapshot                       : Creating snapshot
+2026-05-20T20:45:30.728+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2026-05-20T20:45:30.731+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.command                        : Using deploymentId: 9302729681
+2026-05-20T20:45:30.733+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T20:45:30.765+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov
+2026-05-20T20:45:30.776+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : Table product created
+2026-05-20T20:45:30.777+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov ran successfully in 10ms
+2026-05-20T20:45:30.790+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov
+2026-05-20T20:45:30.794+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : Table position created
+2026-05-20T20:45:30.795+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov ran successfully in 5ms
+2026-05-20T20:45:30.802+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer
+2026-05-20T20:45:30.804+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : Table customer created
+2026-05-20T20:45:30.805+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer ran successfully in 2ms
+2026-05-20T20:45:30.808+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer
+2026-05-20T20:45:30.812+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : Table cart created
+2026-05-20T20:45:30.812+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer ran successfully in 4ms
+2026-05-20T20:45:30.816+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov
+2026-05-20T20:45:30.824+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (product_id)
+2026-05-20T20:45:30.827+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (cart_id)
+2026-05-20T20:45:30.827+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov ran successfully in 11ms
+2026-05-20T20:45:30.830+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer
+2026-05-20T20:45:30.832+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to cart (customer_id)
+2026-05-20T20:45:30.832+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer ran successfully in 1ms
+2026-05-20T20:45:30.839+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.util                           : UPDATE SUMMARY
+2026-05-20T20:45:30.840+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.util                           : Run:                          6
+2026-05-20T20:45:30.840+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.util                           : Previously run:               0
+2026-05-20T20:45:30.840+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.util                           : Filtered out:                 0
+2026-05-20T20:45:30.840+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.util                           : -------------------------------
+2026-05-20T20:45:30.840+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.util                           : Total change sets:            6
+2026-05-20T20:45:30.840+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.util                           : Update summary generated
+2026-05-20T20:45:30.846+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.command                        : Update command completed successfully.
+2026-05-20T20:45:30.846+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 6
+2026-05-20T20:45:30.847+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully released change log lock
+2026-05-20T20:45:30.848+02:00  INFO 21384 --- [g_67_shop] [main] liquibase.command                        : Command execution complete
+2026-05-20T20:45:31.358+02:00  INFO 21384 --- [g_67_shop] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-20T20:45:31.415+02:00  INFO 21384 --- [g_67_shop] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-05-20T20:45:31.458+02:00  INFO 21384 --- [g_67_shop] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-20T20:45:31.776+02:00  INFO 21384 --- [g_67_shop] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-20T20:45:31.862+02:00  INFO 21384 --- [g_67_shop] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-20T20:45:32.781+02:00  INFO 21384 --- [g_67_shop] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-20T20:45:32.782+02:00  INFO 21384 --- [g_67_shop] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T20:45:33.388+02:00  WARN 21384 --- [g_67_shop] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-20T20:45:34.032+02:00  INFO 21384 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 61168 (http) with context path '/'
+2026-05-20T20:45:34.044+02:00  INFO 21384 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Started ProductControllerTestIT in 6.857 seconds (process running for 8.229)
+2026-05-20T20:45:34.047+02:00  WARN 21384 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-05-20T20:45:34.047+02:00  WARN 21384 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-05-20T20:45:34.619+02:00  INFO 21384 --- [g_67_shop] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-20T20:45:34.620+02:00  INFO 21384 --- [g_67_shop] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-20T20:45:34.620+02:00  INFO 21384 --- [g_67_shop] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-05-20T20:45:34.679+02:00 DEBUG 21384 --- [g_67_shop] [http-nio-auto-1-exec-1] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with arguments: [Product save DTO: title - Test product, price - 777,00]
+2026-05-20T20:45:34.764+02:00  INFO 21384 --- [g_67_shop] [http-nio-auto-1-exec-1] d.a.g.service.ProductServiceImpl         : Product saved to the database: Product: id - 1, title - Test product, price - 777,00, active - yes
+2026-05-20T20:45:34.765+02:00 DEBUG 21384 --- [g_67_shop] [http-nio-auto-1-exec-1] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with args [Product save DTO: title - Test product, price - 777,00] returned result: Product DTO: id - 1, title - Test product, price - 777,00
+2026-05-20T20:45:34.961+02:00  INFO 21384 --- [g_67_shop] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-20T20:45:35.086+02:00  INFO 21384 --- [g_67_shop] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-05-20T20:45:35.091+02:00  INFO 21384 --- [g_67_shop] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T20:45:35.093+02:00  INFO 21384 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-20T20:45:35.095+02:00  INFO 21384 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-20T20:47:43.586+02:00  INFO 23392 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Starting ProductControllerTestIT using Java 17.0.16 with PID 23392 (started by bmw73 in C:\IdeaProjects\g_67_shop)
+2026-05-20T20:47:43.587+02:00 DEBUG 23392 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-05-20T20:47:43.588+02:00  INFO 23392 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : The following 1 profile is active: "test"
+2026-05-20T20:47:44.374+02:00  INFO 23392 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-20T20:47:44.445+02:00  INFO 23392 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 2 JPA repository interfaces.
+2026-05-20T20:47:45.217+02:00  INFO 23392 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-05-20T20:47:45.234+02:00  INFO 23392 --- [g_67_shop] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-20T20:47:45.235+02:00  INFO 23392 --- [g_67_shop] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-05-20T20:47:45.336+02:00  INFO 23392 --- [g_67_shop] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-20T20:47:45.336+02:00  INFO 23392 --- [g_67_shop] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1730 ms
+2026-05-20T20:47:45.534+02:00  INFO 23392 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-20T20:47:45.749+02:00  INFO 23392 --- [g_67_shop] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-05-20T20:47:45.751+02:00  INFO 23392 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-20T20:47:45.820+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.database                       : Set default schema name to PUBLIC
+2026-05-20T20:47:46.304+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : Creating database history table with name: PUBLIC.DATABASECHANGELOG
+2026-05-20T20:47:46.401+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T20:47:46.480+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.snapshot                       : Creating snapshot
+2026-05-20T20:47:46.599+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2026-05-20T20:47:46.600+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.command                        : Using deploymentId: 9302865515
+2026-05-20T20:47:46.602+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T20:47:46.627+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov
+2026-05-20T20:47:46.641+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : Table product created
+2026-05-20T20:47:46.642+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov ran successfully in 13ms
+2026-05-20T20:47:46.649+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov
+2026-05-20T20:47:46.653+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : Table position created
+2026-05-20T20:47:46.653+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov ran successfully in 4ms
+2026-05-20T20:47:46.656+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer
+2026-05-20T20:47:46.659+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : Table customer created
+2026-05-20T20:47:46.659+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer ran successfully in 2ms
+2026-05-20T20:47:46.662+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer
+2026-05-20T20:47:46.665+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : Table cart created
+2026-05-20T20:47:46.665+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer ran successfully in 2ms
+2026-05-20T20:47:46.667+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov
+2026-05-20T20:47:46.678+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (product_id)
+2026-05-20T20:47:46.680+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (cart_id)
+2026-05-20T20:47:46.680+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov ran successfully in 13ms
+2026-05-20T20:47:46.687+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer
+2026-05-20T20:47:46.691+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to cart (customer_id)
+2026-05-20T20:47:46.691+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer ran successfully in 3ms
+2026-05-20T20:47:46.698+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.util                           : UPDATE SUMMARY
+2026-05-20T20:47:46.699+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.util                           : Run:                          6
+2026-05-20T20:47:46.699+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.util                           : Previously run:               0
+2026-05-20T20:47:46.699+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.util                           : Filtered out:                 0
+2026-05-20T20:47:46.699+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.util                           : -------------------------------
+2026-05-20T20:47:46.699+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.util                           : Total change sets:            6
+2026-05-20T20:47:46.701+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.util                           : Update summary generated
+2026-05-20T20:47:46.704+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.command                        : Update command completed successfully.
+2026-05-20T20:47:46.705+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 6
+2026-05-20T20:47:46.707+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully released change log lock
+2026-05-20T20:47:46.708+02:00  INFO 23392 --- [g_67_shop] [main] liquibase.command                        : Command execution complete
+2026-05-20T20:47:47.307+02:00  INFO 23392 --- [g_67_shop] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-20T20:47:47.368+02:00  INFO 23392 --- [g_67_shop] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-05-20T20:47:47.409+02:00  INFO 23392 --- [g_67_shop] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-20T20:47:47.733+02:00  INFO 23392 --- [g_67_shop] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-20T20:47:47.821+02:00  INFO 23392 --- [g_67_shop] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-20T20:47:48.713+02:00  INFO 23392 --- [g_67_shop] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-20T20:47:48.716+02:00  INFO 23392 --- [g_67_shop] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T20:47:49.366+02:00  WARN 23392 --- [g_67_shop] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-20T20:47:50.091+02:00  INFO 23392 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 25926 (http) with context path '/'
+2026-05-20T20:47:50.101+02:00  INFO 23392 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Started ProductControllerTestIT in 6.976 seconds (process running for 8.252)
+2026-05-20T20:47:50.104+02:00  WARN 23392 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-05-20T20:47:50.105+02:00  WARN 23392 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-05-20T20:47:50.769+02:00  INFO 23392 --- [g_67_shop] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-20T20:47:50.769+02:00  INFO 23392 --- [g_67_shop] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-20T20:47:50.770+02:00  INFO 23392 --- [g_67_shop] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-05-20T20:47:50.843+02:00 DEBUG 23392 --- [g_67_shop] [http-nio-auto-1-exec-1] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with arguments: [Product save DTO: title - Test product, price - 777,00]
+2026-05-20T20:47:50.913+02:00  INFO 23392 --- [g_67_shop] [http-nio-auto-1-exec-1] d.a.g.service.ProductServiceImpl         : Product saved to the database: Product: id - 1, title - Test product, price - 777,00, active - yes
+2026-05-20T20:47:50.913+02:00 DEBUG 23392 --- [g_67_shop] [http-nio-auto-1-exec-1] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with args [Product save DTO: title - Test product, price - 777,00] returned result: Product DTO: id - 1, title - Test product, price - 777,00
+2026-05-20T20:47:51.119+02:00  INFO 23392 --- [g_67_shop] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-20T20:47:51.263+02:00  INFO 23392 --- [g_67_shop] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-05-20T20:47:51.266+02:00  INFO 23392 --- [g_67_shop] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T20:47:51.268+02:00  INFO 23392 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-20T20:47:51.271+02:00  INFO 23392 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-20T20:49:08.305+02:00  INFO 43904 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Starting ProductControllerTestIT using Java 17.0.16 with PID 43904 (started by bmw73 in C:\IdeaProjects\g_67_shop)
+2026-05-20T20:49:08.307+02:00 DEBUG 43904 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-05-20T20:49:08.307+02:00  INFO 43904 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : The following 1 profile is active: "test"
+2026-05-20T20:49:09.191+02:00  INFO 43904 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-20T20:49:09.274+02:00  INFO 43904 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71 ms. Found 2 JPA repository interfaces.
+2026-05-20T20:49:10.070+02:00  INFO 43904 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-05-20T20:49:10.086+02:00  INFO 43904 --- [g_67_shop] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-20T20:49:10.088+02:00  INFO 43904 --- [g_67_shop] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-05-20T20:49:10.195+02:00  INFO 43904 --- [g_67_shop] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-20T20:49:10.197+02:00  INFO 43904 --- [g_67_shop] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1867 ms
+2026-05-20T20:49:10.392+02:00  INFO 43904 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-20T20:49:10.643+02:00  INFO 43904 --- [g_67_shop] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-05-20T20:49:10.645+02:00  INFO 43904 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-20T20:49:10.729+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.database                       : Set default schema name to PUBLIC
+2026-05-20T20:49:11.248+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : Creating database history table with name: PUBLIC.DATABASECHANGELOG
+2026-05-20T20:49:11.360+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T20:49:11.437+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.snapshot                       : Creating snapshot
+2026-05-20T20:49:11.552+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2026-05-20T20:49:11.553+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.command                        : Using deploymentId: 9302950372
+2026-05-20T20:49:11.555+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T20:49:11.592+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov
+2026-05-20T20:49:11.609+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : Table product created
+2026-05-20T20:49:11.610+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov ran successfully in 16ms
+2026-05-20T20:49:11.618+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov
+2026-05-20T20:49:11.622+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : Table position created
+2026-05-20T20:49:11.623+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov ran successfully in 5ms
+2026-05-20T20:49:11.625+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer
+2026-05-20T20:49:11.628+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : Table customer created
+2026-05-20T20:49:11.628+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer ran successfully in 2ms
+2026-05-20T20:49:11.631+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer
+2026-05-20T20:49:11.634+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : Table cart created
+2026-05-20T20:49:11.634+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer ran successfully in 2ms
+2026-05-20T20:49:11.635+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov
+2026-05-20T20:49:11.642+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (product_id)
+2026-05-20T20:49:11.645+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (cart_id)
+2026-05-20T20:49:11.645+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov ran successfully in 9ms
+2026-05-20T20:49:11.647+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer
+2026-05-20T20:49:11.649+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to cart (customer_id)
+2026-05-20T20:49:11.649+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer ran successfully in 1ms
+2026-05-20T20:49:11.658+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.util                           : UPDATE SUMMARY
+2026-05-20T20:49:11.658+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.util                           : Run:                          6
+2026-05-20T20:49:11.658+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.util                           : Previously run:               0
+2026-05-20T20:49:11.658+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.util                           : Filtered out:                 0
+2026-05-20T20:49:11.658+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.util                           : -------------------------------
+2026-05-20T20:49:11.659+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.util                           : Total change sets:            6
+2026-05-20T20:49:11.660+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.util                           : Update summary generated
+2026-05-20T20:49:11.663+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.command                        : Update command completed successfully.
+2026-05-20T20:49:11.663+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 6
+2026-05-20T20:49:11.666+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully released change log lock
+2026-05-20T20:49:11.667+02:00  INFO 43904 --- [g_67_shop] [main] liquibase.command                        : Command execution complete
+2026-05-20T20:49:12.240+02:00  INFO 43904 --- [g_67_shop] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-20T20:49:12.308+02:00  INFO 43904 --- [g_67_shop] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-05-20T20:49:12.350+02:00  INFO 43904 --- [g_67_shop] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-20T20:49:12.712+02:00  INFO 43904 --- [g_67_shop] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-20T20:49:12.829+02:00  INFO 43904 --- [g_67_shop] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-20T20:49:13.866+02:00  INFO 43904 --- [g_67_shop] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-20T20:49:13.870+02:00  INFO 43904 --- [g_67_shop] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T20:49:14.526+02:00  WARN 43904 --- [g_67_shop] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-20T20:49:15.292+02:00  INFO 43904 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 26597 (http) with context path '/'
+2026-05-20T20:49:15.302+02:00  INFO 43904 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Started ProductControllerTestIT in 7.55 seconds (process running for 9.161)
+2026-05-20T20:49:15.305+02:00  WARN 43904 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-05-20T20:49:15.307+02:00  WARN 43904 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-05-20T20:51:02.631+02:00  WARN 43904 --- [g_67_shop] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m16s653ms89µs101ns).
+2026-05-20T20:51:03.221+02:00  INFO 43904 --- [g_67_shop] [http-nio-auto-1-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-20T20:51:03.221+02:00  INFO 43904 --- [g_67_shop] [http-nio-auto-1-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-20T20:51:03.222+02:00  INFO 43904 --- [g_67_shop] [http-nio-auto-1-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-05-20T20:51:03.287+02:00 DEBUG 43904 --- [g_67_shop] [http-nio-auto-1-exec-2] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with arguments: [Product save DTO: title - Test product, price - 777,00]
+2026-05-20T20:51:03.349+02:00  INFO 43904 --- [g_67_shop] [http-nio-auto-1-exec-2] d.a.g.service.ProductServiceImpl         : Product saved to the database: Product: id - 1, title - Test product, price - 777,00, active - yes
+2026-05-20T20:51:03.351+02:00 DEBUG 43904 --- [g_67_shop] [http-nio-auto-1-exec-2] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with args [Product save DTO: title - Test product, price - 777,00] returned result: Product DTO: id - 1, title - Test product, price - 777,00
+2026-05-20T20:52:52.711+02:00  WARN 43904 --- [g_67_shop] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m50s80ms342µs800ns).
+2026-05-20T20:54:21.852+02:00  WARN 43904 --- [g_67_shop] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=54s219ms990µs).
+2026-05-20T20:56:26.243+02:00  WARN 43904 --- [g_67_shop] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m4s391ms97µs300ns).
+2026-05-20T20:56:51.839+02:00  INFO 43904 --- [g_67_shop] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-20T20:56:51.983+02:00  INFO 43904 --- [g_67_shop] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-05-20T20:56:51.987+02:00  INFO 43904 --- [g_67_shop] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T20:56:51.989+02:00  INFO 43904 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-20T20:56:51.992+02:00  INFO 43904 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-20T21:28:56.434+02:00  INFO 11552 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Starting ProductControllerTestIT using Java 17.0.16 with PID 11552 (started by bmw73 in C:\IdeaProjects\g_67_shop)
+2026-05-20T21:28:56.436+02:00 DEBUG 11552 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-05-20T21:28:56.437+02:00  INFO 11552 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : The following 1 profile is active: "test"
+2026-05-20T21:28:57.330+02:00  INFO 11552 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-20T21:28:57.411+02:00  INFO 11552 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 2 JPA repository interfaces.
+2026-05-20T21:28:58.202+02:00  INFO 11552 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-05-20T21:28:58.221+02:00  INFO 11552 --- [g_67_shop] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-20T21:28:58.221+02:00  INFO 11552 --- [g_67_shop] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-05-20T21:28:58.326+02:00  INFO 11552 --- [g_67_shop] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-20T21:28:58.326+02:00  INFO 11552 --- [g_67_shop] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1867 ms
+2026-05-20T21:28:58.541+02:00  INFO 11552 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-20T21:28:58.783+02:00  INFO 11552 --- [g_67_shop] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-05-20T21:28:58.785+02:00  INFO 11552 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-20T21:28:58.856+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.database                       : Set default schema name to PUBLIC
+2026-05-20T21:28:59.355+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : Creating database history table with name: PUBLIC.DATABASECHANGELOG
+2026-05-20T21:28:59.458+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T21:28:59.526+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.snapshot                       : Creating snapshot
+2026-05-20T21:28:59.628+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2026-05-20T21:28:59.628+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.command                        : Using deploymentId: 9305338520
+2026-05-20T21:28:59.630+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T21:28:59.657+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov
+2026-05-20T21:28:59.669+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : Table product created
+2026-05-20T21:28:59.670+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov ran successfully in 11ms
+2026-05-20T21:28:59.677+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov
+2026-05-20T21:28:59.680+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : Table position created
+2026-05-20T21:28:59.680+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov ran successfully in 3ms
+2026-05-20T21:28:59.684+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer
+2026-05-20T21:28:59.686+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : Table customer created
+2026-05-20T21:28:59.686+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer ran successfully in 2ms
+2026-05-20T21:28:59.688+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer
+2026-05-20T21:28:59.690+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : Table cart created
+2026-05-20T21:28:59.690+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer ran successfully in 1ms
+2026-05-20T21:28:59.692+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov
+2026-05-20T21:28:59.703+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (product_id)
+2026-05-20T21:28:59.707+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (cart_id)
+2026-05-20T21:28:59.707+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov ran successfully in 15ms
+2026-05-20T21:28:59.710+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer
+2026-05-20T21:28:59.712+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to cart (customer_id)
+2026-05-20T21:28:59.712+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer ran successfully in 2ms
+2026-05-20T21:28:59.725+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.util                           : UPDATE SUMMARY
+2026-05-20T21:28:59.725+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.util                           : Run:                          6
+2026-05-20T21:28:59.725+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.util                           : Previously run:               0
+2026-05-20T21:28:59.725+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.util                           : Filtered out:                 0
+2026-05-20T21:28:59.725+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.util                           : -------------------------------
+2026-05-20T21:28:59.725+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.util                           : Total change sets:            6
+2026-05-20T21:28:59.726+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.util                           : Update summary generated
+2026-05-20T21:28:59.730+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.command                        : Update command completed successfully.
+2026-05-20T21:28:59.730+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 6
+2026-05-20T21:28:59.732+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully released change log lock
+2026-05-20T21:28:59.733+02:00  INFO 11552 --- [g_67_shop] [main] liquibase.command                        : Command execution complete
+2026-05-20T21:29:00.367+02:00  INFO 11552 --- [g_67_shop] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-20T21:29:00.454+02:00  INFO 11552 --- [g_67_shop] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-05-20T21:29:00.503+02:00  INFO 11552 --- [g_67_shop] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-20T21:29:00.842+02:00  INFO 11552 --- [g_67_shop] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-20T21:29:00.942+02:00  INFO 11552 --- [g_67_shop] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-20T21:29:01.908+02:00  INFO 11552 --- [g_67_shop] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-20T21:29:01.910+02:00  INFO 11552 --- [g_67_shop] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T21:29:02.618+02:00  WARN 11552 --- [g_67_shop] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-20T21:29:03.336+02:00  INFO 11552 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 47426 (http) with context path '/'
+2026-05-20T21:29:03.346+02:00  INFO 11552 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Started ProductControllerTestIT in 7.492 seconds (process running for 8.846)
+2026-05-20T21:29:03.350+02:00  WARN 11552 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-05-20T21:29:03.350+02:00  WARN 11552 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-05-20T21:29:03.945+02:00  INFO 11552 --- [g_67_shop] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-20T21:29:03.946+02:00  INFO 11552 --- [g_67_shop] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-20T21:29:03.947+02:00  INFO 11552 --- [g_67_shop] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-05-20T21:29:04.036+02:00 DEBUG 11552 --- [g_67_shop] [http-nio-auto-1-exec-1] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with arguments: [Product save DTO: title - , price - 777,00]
+2026-05-20T21:29:04.112+02:00  INFO 11552 --- [g_67_shop] [http-nio-auto-1-exec-1] d.a.g.service.ProductServiceImpl         : Product saved to the database: Product: id - 1, title - , price - 777,00, active - yes
+2026-05-20T21:29:04.113+02:00 DEBUG 11552 --- [g_67_shop] [http-nio-auto-1-exec-1] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with args [Product save DTO: title - , price - 777,00] returned result: Product DTO: id - 1, title - , price - 777,00
+2026-05-20T21:29:04.182+02:00 DEBUG 11552 --- [g_67_shop] [http-nio-auto-1-exec-2] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with arguments: [Product save DTO: title - Test product, price - 777,00]
+2026-05-20T21:29:04.183+02:00  INFO 11552 --- [g_67_shop] [http-nio-auto-1-exec-2] d.a.g.service.ProductServiceImpl         : Product saved to the database: Product: id - 2, title - Test product, price - 777,00, active - yes
+2026-05-20T21:29:04.183+02:00 DEBUG 11552 --- [g_67_shop] [http-nio-auto-1-exec-2] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with args [Product save DTO: title - Test product, price - 777,00] returned result: Product DTO: id - 2, title - Test product, price - 777,00
+2026-05-20T21:29:04.337+02:00  INFO 11552 --- [g_67_shop] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-20T21:29:04.470+02:00  INFO 11552 --- [g_67_shop] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-05-20T21:29:04.472+02:00  INFO 11552 --- [g_67_shop] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T21:29:04.475+02:00  INFO 11552 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-20T21:29:04.482+02:00  INFO 11552 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-20T21:48:58.021+02:00  INFO 32844 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Starting ProductControllerTestIT using Java 17.0.16 with PID 32844 (started by bmw73 in C:\IdeaProjects\g_67_shop)
+2026-05-20T21:48:58.022+02:00 DEBUG 32844 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-05-20T21:48:58.024+02:00  INFO 32844 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : The following 1 profile is active: "test"
+2026-05-20T21:48:58.965+02:00  INFO 32844 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-20T21:48:59.054+02:00  INFO 32844 --- [g_67_shop] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 2 JPA repository interfaces.
+2026-05-20T21:48:59.937+02:00  INFO 32844 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-05-20T21:48:59.954+02:00  INFO 32844 --- [g_67_shop] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-20T21:48:59.955+02:00  INFO 32844 --- [g_67_shop] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-05-20T21:49:00.078+02:00  INFO 32844 --- [g_67_shop] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-20T21:49:00.078+02:00  INFO 32844 --- [g_67_shop] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2034 ms
+2026-05-20T21:49:00.324+02:00  INFO 32844 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-20T21:49:00.598+02:00  INFO 32844 --- [g_67_shop] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-05-20T21:49:00.601+02:00  INFO 32844 --- [g_67_shop] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-20T21:49:00.673+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.database                       : Set default schema name to PUBLIC
+2026-05-20T21:49:01.177+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : Creating database history table with name: PUBLIC.DATABASECHANGELOG
+2026-05-20T21:49:01.278+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T21:49:01.354+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.snapshot                       : Creating snapshot
+2026-05-20T21:49:01.456+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2026-05-20T21:49:01.457+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.command                        : Using deploymentId: 9306540295
+2026-05-20T21:49:01.458+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-05-20T21:49:01.482+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov
+2026-05-20T21:49:01.492+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : Table product created
+2026-05-20T21:49:01.494+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-product.xml::create-table-product::Andrey Pomelov ran successfully in 10ms
+2026-05-20T21:49:01.504+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov
+2026-05-20T21:49:01.507+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : Table position created
+2026-05-20T21:49:01.508+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-position.xml::create-table-position::Andrey Pomelov ran successfully in 3ms
+2026-05-20T21:49:01.512+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer
+2026-05-20T21:49:01.515+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : Table customer created
+2026-05-20T21:49:01.515+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-customer.xml::create-table-customer::Sergej Brauer ran successfully in 3ms
+2026-05-20T21:49:01.520+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer
+2026-05-20T21:49:01.523+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : Table cart created
+2026-05-20T21:49:01.524+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/create-table-cart.xml::create-table-cart::Sergej Brauer ran successfully in 4ms
+2026-05-20T21:49:01.525+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov
+2026-05-20T21:49:01.532+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (product_id)
+2026-05-20T21:49:01.535+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to position (cart_id)
+2026-05-20T21:49:01.535+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-position.xml::add-foreign-keys-to-table-position::Andrey Pomelov ran successfully in 10ms
+2026-05-20T21:49:01.537+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.ui                             : Running Changeset: db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer
+2026-05-20T21:49:01.538+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : Foreign key constraint added to cart (customer_id)
+2026-05-20T21:49:01.538+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.changelog                      : ChangeSet db/changelog/v.0.1.0/add-foreign-keys-to-table-cart.xml::add-foreign-keys-to-table-cart::Sergej Brauer ran successfully in 1ms
+2026-05-20T21:49:01.545+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.util                           : UPDATE SUMMARY
+2026-05-20T21:49:01.545+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.util                           : Run:                          6
+2026-05-20T21:49:01.545+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.util                           : Previously run:               0
+2026-05-20T21:49:01.545+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.util                           : Filtered out:                 0
+2026-05-20T21:49:01.545+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.util                           : -------------------------------
+2026-05-20T21:49:01.545+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.util                           : Total change sets:            6
+2026-05-20T21:49:01.546+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.util                           : Update summary generated
+2026-05-20T21:49:01.548+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.command                        : Update command completed successfully.
+2026-05-20T21:49:01.550+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 6
+2026-05-20T21:49:01.551+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.lockservice                    : Successfully released change log lock
+2026-05-20T21:49:01.552+02:00  INFO 32844 --- [g_67_shop] [main] liquibase.command                        : Command execution complete
+2026-05-20T21:49:02.397+02:00  INFO 32844 --- [g_67_shop] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-20T21:49:02.458+02:00  INFO 32844 --- [g_67_shop] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-05-20T21:49:02.500+02:00  INFO 32844 --- [g_67_shop] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-20T21:49:02.799+02:00  INFO 32844 --- [g_67_shop] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-20T21:49:02.879+02:00  INFO 32844 --- [g_67_shop] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-20T21:49:03.735+02:00  INFO 32844 --- [g_67_shop] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-20T21:49:03.739+02:00  INFO 32844 --- [g_67_shop] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T21:49:04.388+02:00  WARN 32844 --- [g_67_shop] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-20T21:49:05.057+02:00  INFO 32844 --- [g_67_shop] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 27902 (http) with context path '/'
+2026-05-20T21:49:05.066+02:00  INFO 32844 --- [g_67_shop] [main] d.a.g.c.ProductControllerTestIT          : Started ProductControllerTestIT in 7.614 seconds (process running for 8.942)
+2026-05-20T21:49:05.069+02:00  WARN 32844 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-05-20T21:49:05.070+02:00  WARN 32844 --- [g_67_shop] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-05-20T21:49:05.734+02:00  INFO 32844 --- [g_67_shop] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-20T21:49:05.736+02:00  INFO 32844 --- [g_67_shop] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-20T21:49:05.737+02:00  INFO 32844 --- [g_67_shop] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-05-20T21:49:05.793+02:00 DEBUG 32844 --- [g_67_shop] [http-nio-auto-1-exec-1] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with arguments: [Product save DTO: title - , price - 777,00]
+2026-05-20T21:49:05.795+02:00  INFO 32844 --- [g_67_shop] [http-nio-auto-1-exec-1] d.a.g.service.ProductServiceImpl         : Product saved to the database: Product: id - 3, title - , price - 777,00, active - yes
+2026-05-20T21:49:05.795+02:00 DEBUG 32844 --- [g_67_shop] [http-nio-auto-1-exec-1] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with args [Product save DTO: title - , price - 777,00] returned result: Product DTO: id - 3, title - , price - 777,00
+2026-05-20T21:49:05.940+02:00 DEBUG 32844 --- [g_67_shop] [http-nio-auto-1-exec-2] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with arguments: [Product save DTO: title - Test product, price - 777,00]
+2026-05-20T21:49:05.941+02:00  INFO 32844 --- [g_67_shop] [http-nio-auto-1-exec-2] d.a.g.service.ProductServiceImpl         : Product saved to the database: Product: id - 6, title - Test product, price - 777,00, active - yes
+2026-05-20T21:49:05.942+02:00 DEBUG 32844 --- [g_67_shop] [http-nio-auto-1-exec-2] de.ait.g_67_shop.logging.AspectLogging   : Method save of the class ProductServiceImpl called with args [Product save DTO: title - Test product, price - 777,00] returned result: Product DTO: id - 6, title - Test product, price - 777,00
+2026-05-20T21:49:06.009+02:00  INFO 32844 --- [g_67_shop] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-20T21:49:06.134+02:00  INFO 32844 --- [g_67_shop] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-05-20T21:49:06.137+02:00  INFO 32844 --- [g_67_shop] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-20T21:49:06.139+02:00  INFO 32844 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-20T21:49:06.141+02:00  INFO 32844 --- [g_67_shop] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
