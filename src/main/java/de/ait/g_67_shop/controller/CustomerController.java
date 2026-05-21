@@ -3,6 +3,7 @@ package de.ait.g_67_shop.controller;
 import de.ait.g_67_shop.dto.customer.CustomerDto;
 import de.ait.g_67_shop.dto.customer.CustomerSaveDto;
 import de.ait.g_67_shop.dto.customer.CustomerUpdateDto;
+import de.ait.g_67_shop.dto.position.PositionUpdateDto;
 import de.ait.g_67_shop.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -131,42 +132,36 @@ public class CustomerController {
         return service.getAverageProductPriceInCartByCustomerId(id);
     }
 
-    // * Добавить товар в корзину покупателя по их идентификаторам.
-    //   Количество добавляемого продукта можно передавать в теле запроса либо параметром.
-    //   POST -> http://localhost:8081/customers/2/cart/products/5?quantity=3
-    @PostMapping("/{customerId}/cart/products/{productId}")
+    // * Добавить товар в корзину покупателя.
+    //   productId и quantity передаются в теле запроса через PositionUpdateDto.
+    //   POST -> http://localhost:8081/customers/2/cart/items
+    @PostMapping("/{customerId}/cart/items")
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Добавить товар в корзину", description = "Добавляет указанное количество выбранного товара в корзину покупателя")
     public void addProductToCart(
             @PathVariable
             @Parameter(description = "ID покупателя")
             Long customerId,
-            @PathVariable
-            @Parameter(description = "ID продукта для добавления")
-            Long productId,
-            @RequestParam
-            @Parameter(description = "Количество товара", example = "1")
-            Integer quantity) {
-        service.addProductToCart(customerId, productId, quantity);
+            @RequestBody
+            @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "ID продукта и количество для добавления в корзину")
+            PositionUpdateDto dto) {
+        service.addProductToCart(customerId, dto);
     }
 
-    // * Удалить товар из корзины покупателя по их идентификаторам.
-    //   Количество удаляемого продукта можно передавать в теле запроса либо параметром.
-    //   DELETE -> http://localhost:8081/customers/2/cart/products/5?quantity=3
-    @DeleteMapping("/{customerId}/cart/products/{productId}")
+    // * Удалить товар из корзины покупателя.
+    //   productId и quantity передаются в теле запроса через PositionUpdateDto.
+    //   DELETE -> http://localhost:8081/customers/2/cart/items
+    @DeleteMapping("/{customerId}/cart/items")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(summary = "Удалить товар из корзины", description = "Уменьшает количество или полностью удаляет товар из корзины покупателя")
     public void deleteProductFromCart(
             @PathVariable
             @Parameter(description = "ID покупателя")
             Long customerId,
-            @PathVariable
-            @Parameter(description = "ID продукта для удаления")
-            Long productId,
-            @RequestParam
-            @Parameter(description = "Количество товара для удаления", example = "1")
-            Integer quantity) {
-        service.removeProductFromCartById(customerId, productId, quantity);
+            @RequestBody
+            @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "ID продукта и количество для удаления из корзины")
+            PositionUpdateDto dto) {
+        service.removeProductFromCartById(customerId, dto);
     }
 
     // * Полностью очистить корзину покупателя по его идентификатору.

@@ -4,14 +4,14 @@ spring:
   datasource: # настройки подключения к базе данных
     driver-class-name: org.postgresql.Driver # Используем драйвер PostgreSQL
     # Формат: [протокол]:[тип_бд]://[хост]:[порт]/[имя_базы]
-    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    url: jdbc:postgresql://localhost:5432/g_67_shop
     #      |      |          |        |       |
     #      |      |          |        |       └── Название базы данных
     #      |      |          |        └──────── Порт (у Postgres по умолчанию 5432)
     #      |      |          └───────────────── Адрес сервера (localhost — твой ПК)
     #      |      └──────────────────────────── Тип СУБД (PostgreSQL)
     #      └─────────────────────────────────── Технология соединения в Java (JDBC)
-    username: ${DB_USERNAME}
+    username: postgres
     password: ${DB_PASSWORD}
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
@@ -36,4 +36,4 @@ logging:
         g_67_shop: debug
 
 messages:
-  greeting: Hello from Digital Ocean!
+  greeting: Hello from local application!
