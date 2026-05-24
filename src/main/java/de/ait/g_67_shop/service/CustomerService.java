@@ -41,11 +41,11 @@ public interface CustomerService {
 
     // * Добавить товар в корзину покупателя по их идентификаторам (если оба активны).
     //   productId и quantity передаются в теле запроса через PositionUpdateDto.
-    void addProductToCart(Long customerId, PositionUpdateDto dto);
+    void addProductToCart(Long customerId, Long productId, PositionUpdateDto dto);
 
     // * Удалить товар из корзины покупателя по их идентификаторам.
     //   productId и quantity передаются в теле запроса через PositionUpdateDto.
-    void removeProductFromCartById(Long customerId, PositionUpdateDto dto);
+    void removeProductFromCartById(Long customerId, Long productId, PositionUpdateDto dto);
 
     // * Полностью очистить корзину покупателя по его идентификатору (если он активен).
     void clearCustomerCartById(Long id);

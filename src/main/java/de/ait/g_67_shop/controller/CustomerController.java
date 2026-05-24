@@ -8,6 +8,7 @@ import de.ait.g_67_shop.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +38,7 @@ public class CustomerController {
     public CustomerDto save(
             @RequestBody
             @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Тело запроса с данными нового покупателя")
+            @Valid
             CustomerSaveDto saveDto) {
         // Здесь будет обращение к сервису
         return service.save(saveDto);
@@ -134,34 +136,47 @@ public class CustomerController {
 
     // * Добавить товар в корзину покупателя.
     //   productId и quantity передаются в теле запроса через PositionUpdateDto.
-    //   POST -> http://localhost:8081/customers/2/cart/items
-    @PostMapping("/{customerId}/cart/items")
+    //   POST -> http://localhost:8081/customers/2/cart/items/3
+    @PostMapping("/{customerId}/cart/items/{productId}")
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Добавить товар в корзину", description = "Добавляет указанное количество выбранного товара в корзину покупателя")
+    @Operation(summary = "Добавить товар в корзину",
+               description = "Добавляет указанное количество выбранного товара в корзину покупателя")
     public void addProductToCart(
             @PathVariable
             @Parameter(description = "ID покупателя")
             Long customerId,
+
+            @PathVariable
+            Long productId,
+            @Parameter(description = "ID продукта")
+
             @RequestBody
-            @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "ID продукта и количество для добавления в корзину")
+            @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    description = "ID продукта и количество для добавления в корзину")
             PositionUpdateDto dto) {
-        service.addProductToCart(customerId, dto);
+        service.addProductToCart(customerId, productId, dto);
     }
 
     // * Удалить товар из корзины покупателя.
     //   productId и quantity передаются в теле запроса через PositionUpdateDto.
-    //   DELETE -> http://localhost:8081/customers/2/cart/items
-    @DeleteMapping("/{customerId}/cart/items")
+    //   DELETE -> http://localhost:8081/customers/2/cart/items/2
+    @DeleteMapping("/{customerId}/cart/items/{productId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @Operation(summary = "Удалить товар из корзины", description = "Уменьшает количество или полностью удаляет товар из корзины покупателя")
+    @Operation(summary = "Удалить товар из корзины",
+            description = "Уменьшает количество или полностью удаляет товар из корзины покупателя")
     public void deleteProductFromCart(
             @PathVariable
             @Parameter(description = "ID покупателя")
             Long customerId,
+
+            @PathVariable
+            @Parameter(description = "ID продукта")
+            Long productId,
+
             @RequestBody
             @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "ID продукта и количество для удаления из корзины")
             PositionUpdateDto dto) {
-        service.removeProductFromCartById(customerId, dto);
+        service.removeProductFromCartById(customerId, productId, dto);
     }
 
     // * Полностью очистить корзину покупателя по его идентификатору.

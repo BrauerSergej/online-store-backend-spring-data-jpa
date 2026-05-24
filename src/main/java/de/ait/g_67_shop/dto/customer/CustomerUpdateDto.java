@@ -6,22 +6,22 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public class CustomerUpdateDto {
 
     @Schema(description = "New name for the customer", example = "Jane Doe")
-    private String newName;
+    private String name;
 
     public CustomerUpdateDto() {
     }
 
     public String getName() {
-        return newName;
+        return name;
     }
 
     public void setName(String name) {
-        this.newName = name;
+        this.name = name;
     }
 
     @Override
     public String toString() {
         // Formatted output of the object for logs and console.
-        return String.format("Customer update DTO: name - %s", newName);
+        return String.format("Customer update DTO: name - %s", name);
     }
 }

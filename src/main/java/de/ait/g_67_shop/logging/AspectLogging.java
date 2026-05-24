@@ -49,7 +49,8 @@ public class AspectLogging {
     public void afterReturningAnyMethodInProductService(JoinPoint joinPoint, Object result) {
         String methodName = joinPoint.getSignature().getName();
         String className = joinPoint.getTarget().getClass().getSimpleName();
-        logger.debug("Method {} of the class {} called with args {} returned result: {}", methodName, className, Arrays.toString(joinPoint.getArgs()), result);
+        logger.debug("Method {} of the class {} returned result: {}",
+                methodName, className, result);
     }
 
     @AfterThrowing(
@@ -59,9 +60,6 @@ public class AspectLogging {
     public void afterThrowingAnyMethodInProductService(JoinPoint joinPoint, Exception e) {
         String methodName = joinPoint.getSignature().getName();
         String className = joinPoint.getTarget().getClass().getSimpleName();
-        logger.warn("Method {} of the class {} called with args {} threw {}: {}",
-                methodName, className, Arrays.toString(joinPoint.getArgs()),
-                e.getClass().getSimpleName(), e.getMessage(), e);
+        logger.warn("Method {} of the class {} threw an exception", methodName, className, e);
     }
-
 }

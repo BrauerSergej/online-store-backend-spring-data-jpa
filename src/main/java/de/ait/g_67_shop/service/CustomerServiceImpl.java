@@ -9,8 +9,8 @@ import de.ait.g_67_shop.dto.customer.CustomerSaveDto;
 import de.ait.g_67_shop.dto.customer.CustomerUpdateDto;
 import de.ait.g_67_shop.dto.mapping.CustomerMapper;
 import de.ait.g_67_shop.dto.position.PositionUpdateDto;
-import de.ait.g_67_shop.exception.CartEmptyException;
-import de.ait.g_67_shop.exception.CustomerNotFoundException;
+import de.ait.g_67_shop.exceptions.types.EntityNotFoundException;
+import de.ait.g_67_shop.exceptions.types.EntityUpdateException;
 import de.ait.g_67_shop.repository.CustomerRepository;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Service
@@ -44,9 +45,11 @@ public class CustomerServiceImpl implements CustomerService {
     // При сохранении покупатель автоматически считается активным.
     @Transactional
     public CustomerDto save(CustomerSaveDto saveDto) {
+        // Если у вас логика метода допускает, что на вход пришло значение null, тогда вам эта защита не нужна.
+        // Но если логика метода сама по себе такая, что вы не должны там работать со значением null, то такая защита нужна.
+        Objects.requireNonNull(saveDto, "CustomerSaveDto cannot be null");
         Customer entity = mapper.mapDtoToEntity(saveDto);
         entity.setActive(true);
-
         // Автоматически создаём пустую корзину для нового клиента.
         // Связь @OneToOne(cascade = ALL) в Customer сохранит корзину каскадно.
         Cart cart = new Cart();
@@ -74,8 +77,10 @@ public class CustomerServiceImpl implements CustomerService {
     // Вернуть одного активного покупателя по id.
     @Override
     public Customer getActiveEntityById(Long id) {
+        Objects.requireNonNull(id, "Customer id cannot be null");
         return repository.findByIdAndActiveTrue(id).orElseThrow(
-                () -> new CustomerNotFoundException("Customer with ID not found: " + id)
+                // Метод ищет объект в базе? → используй orElseThrow с EntityNotFoundException.
+                () -> new EntityNotFoundException(Customer.class, id)
         );
     }
 
@@ -85,17 +90,29 @@ public class CustomerServiceImpl implements CustomerService {
     // технология Spring Data JPA эти изменения отразит ещё и в базе данных, а не только в самом Java-объекте.
     // Изменить одного покупателя по id.
     public void update(Long id, CustomerUpdateDto updateDto) {
+        // ставим для параметров, которые пришли в метод снаружи
+        Objects.requireNonNull(id, "Customer id cannot be null");
+        Objects.requireNonNull(updateDto, "CustomerUpdateDto cannot be null");
         String newName = updateDto.getName();
-        repository.findById(id).ifPresent(x -> {
-            x.setName(newName);
-            logger.info("Customer id {} updated, new name: {}", id, updateDto.getName());
-        });
+        if (newName == null || newName.isBlank()) {
+            // Метод проверяет бизнес-правило? → используй throw new EntityUpdateException.
+            // EntityUpdateException означает: объект может существовать, но операция невозможна
+            // из-за неправильных данных или запрещённого действия.
+            throw new EntityUpdateException("Customer name cannot be empty");
+        }
 
+        Customer customer = repository.findById(id).orElseThrow(
+                // Метод ищет объект в базе? → используй orElseThrow с EntityNotFoundException.
+                () -> new EntityNotFoundException(Customer.class, id)
+        );
+        customer.setName(newName);
+        logger.info("Customer id {} updated, new name: {}", id, newName);
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
+        Objects.requireNonNull(id, "Customer id cannot be null");
         repository.findByIdAndActiveTrue(id).ifPresent(x -> {
             x.setActive(false);
             logger.info("Customer id {} marked as inactive", id);
@@ -105,10 +122,15 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional
     public void restoreById(Long id) {
-        repository.findById(id).ifPresent(x -> {
-            x.setActive(true);
-            logger.info("Customer id {} marked as active", id);
-        });
+        Objects.requireNonNull(id, "Customer id cannot be null");
+
+        Customer customer = repository.findById(id).orElseThrow(
+                // Метод ищет объект в базе? → используй orElseThrow с EntityNotFoundException.
+                () -> new EntityNotFoundException(Customer.class, id)
+        );
+        customer.setActive(true);
+        logger.info("Customer id {} marked as active", id);
+
     }
 
     // * Вернуть общее количество покупателей в базе данных (активных).
@@ -121,10 +143,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public BigDecimal getActiveCustomerCartTotalCostById(Long id) {
         CustomerDto customer = getActiveCustomerById(id);
-
-        if (customer == null || customer.getCart() == null || customer.getCart().getPositions().isEmpty()) {
-            throw new CartEmptyException("Cannot calculate total cost because the cart is empty");
-        }
 
         // Умножаем цену продукта на его количество в позиции и суммируем
         return customer.getCart().getPositions().stream()
@@ -155,11 +173,19 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional
-    public void addProductToCart(Long customerId, PositionUpdateDto dto) {
+    public void addProductToCart(Long customerId, Long productId, PositionUpdateDto dto) {
+        Objects.requireNonNull(customerId, "Customer id cannot be null");
+        Objects.requireNonNull(productId, "Product id cannot be null");
+        Objects.requireNonNull(dto, "PositionDto cannot be null");
+        // dto.getQuantity() == null - quantity не пришёл / quantity пустой / quantity равен null
+        // dto.getQuantity() <= 0 - Нормальное ли количество? Больше ли оно 0?
         if (dto.getQuantity() == null || dto.getQuantity() <= 0) {
-            throw new IllegalArgumentException("Quantity must be positive");
+            // Метод проверяет бизнес-правило? → используй throw new EntityUpdateException.
+            // EntityUpdateException означает: объект может существовать, но операция невозможна
+            // из-за неправильных данных или запрещённого действия.
+            throw new EntityUpdateException("Position quantity should be greater than 0");
         }
-        Long productId = dto.getProductId();
+
         int quantity = dto.getQuantity();
 
         Customer customer = getActiveEntityById(customerId);
@@ -190,11 +216,19 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional
-    public void removeProductFromCartById(Long customerId, PositionUpdateDto dto) {
+    public void removeProductFromCartById(Long customerId, Long productId, PositionUpdateDto dto) {
+        Objects.requireNonNull(customerId, "Customer id cannot be null");
+        Objects.requireNonNull(productId, "Product id cannot be null");
+        Objects.requireNonNull(dto, "PositionUpdateDto cannot be null");
+
         if (dto.getQuantity() == null || dto.getQuantity() <= 0) {
-            throw new IllegalArgumentException("Quantity must be positive");
+            // throw прерывает выполнение текущего метода.
+            // EntityUpdateException сообщает, что операция изменения невозможна,
+            // потому что клиент передал некорректное количество товара.
+            // Далее эту ошибку перехватит GlobalExceptionHandler и вернёт клиенту HTTP 400 BAD_REQUEST.
+            throw new EntityUpdateException("Quantity must be positive");
         }
-        Long productId = dto.getProductId();
+
         int quantity = dto.getQuantity();
 
         Customer customer = getActiveEntityById(customerId);
@@ -203,35 +237,47 @@ public class CustomerServiceImpl implements CustomerService {
         Position existingPosition = positions.stream()
                 .filter(p -> p.getProduct().getId().equals(productId))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new EntityUpdateException("Product is not in customer's cart"));
 
-        if (existingPosition != null) {
-            int newQuantity = existingPosition.getQuantity() - quantity;
-            if (newQuantity > 0) {
-                existingPosition.setQuantity(newQuantity);
-                logger.info("Business Event: Customer ID {} reduced quantity of Product ID {} in cart by {}. Remaining: {}",
-                        customerId, productId, quantity, newQuantity);
-            } else {
-                positions.remove(existingPosition);
-                logger.info("Business Event: Customer ID {} COMPLETELY REMOVED Product ID {} from cart",
-                        customerId, productId);
-            }
+        int newQuantity = existingPosition.getQuantity() - quantity;
+        if (newQuantity > 0) {
+            existingPosition.setQuantity(newQuantity);
+            logger.info("Business Event: Customer ID {} reduced quantity of Product ID {} in cart by {}. Remaining: {}",
+                    customerId, productId, quantity, newQuantity);
         } else {
-            logger.warn("Business Event Failed: Customer ID {} tried to remove Product ID {} which was not in cart",
+            positions.remove(existingPosition);
+            logger.info("Business Event: Customer ID {} COMPLETELY REMOVED Product ID {} from cart",
                     customerId, productId);
         }
+
     }
 
     @Override
     @Transactional
     public void clearCustomerCartById(Long id) {
         Customer customer = getActiveEntityById(id);
+        Cart cart = customer.getCart();
 
-        int itemsCount = customer.getCart().getPositions().size();
-        customer.getCart().getPositions().clear();
+        if (cart == null) {
+            // Метод проверяет бизнес-правило? → используй throw new EntityUpdateException.
+            // EntityUpdateException означает: объект может существовать, но операция невозможна
+            // из-за неправильных данных или запрещённого действия.
+            throw new EntityUpdateException("Customer cart does not exist");
+        }
+        // Возьми из корзины коллекцию всех позиций и сохрани её в переменную positions.
+        Set<Position> positions = cart.getPositions();
+        // считает, сколько позиций было в корзине.
+        int itemsCount = positions.size();
+        // Очищаем корзину
+        positions.clear();
 
         // Бизнес-лог: фиксируем факт полной очистки и сколько позиций там было
         logger.info("Business Event: Customer ID {} CLEARED their cart. Removed {} unique product positions",
                 id, itemsCount);
     }
 }
+
+// EntityNotFoundException  → 404 NOT_FOUND
+// EntityUpdateException   → 400 BAD_REQUEST
+// ConstraintViolation     → 400 BAD_REQUEST
+// NullPointerException    → 500 INTERNAL_SERVER_ERROR
