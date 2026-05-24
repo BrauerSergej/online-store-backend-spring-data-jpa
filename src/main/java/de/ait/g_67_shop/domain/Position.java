@@ -1,6 +1,9 @@
 package de.ait.g_67_shop.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 import java.util.Objects;
 
 @Entity // Помечает класс как сущность, которая будет храниться в БД
@@ -12,6 +15,7 @@ public class Position {
     @Column(name = "id") // Имя колонки в таблице
     private Long id;
 
+    @NotNull(message = "Product cannot be null")
     // @ManyToOne — связь "Многие к Одному": много позиций могут ссылаться на один товар.
     // fetch = FetchType.EAGER — "жадная" загрузка: товар подгружается из базы сразу вместе с позицией.
     @ManyToOne(fetch = FetchType.EAGER)
@@ -19,9 +23,12 @@ public class Position {
     @JoinColumn(name = "product_id", nullable = false) // Поле product_id не может быть пустым
     private Product product;
 
-    @Column(name = "quantity") // Колонка для хранения количества товара
+    // @Positive проверяет, что значение больше 0
+    @Positive(message = "The quantity must be greater than zero")
+    @Column(name = "quantity", nullable = false) // Колонка для хранения количества товара
     private int quantity;
 
+    // @NotNull(message = "Cart cannot be null")
     // @ManyToOne — связь "Многие к Одному": много позиций могут принадлежать одной корзине (Cart).
     @ManyToOne
     @JoinColumn(name = "cart_id", nullable = false) // Связь с таблицей корзин через колонку cart_id

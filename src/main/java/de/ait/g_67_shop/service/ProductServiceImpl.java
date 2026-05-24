@@ -5,7 +5,7 @@ import de.ait.g_67_shop.dto.mapping.ProductMapper;
 import de.ait.g_67_shop.dto.product.ProductDto;
 import de.ait.g_67_shop.dto.product.ProductSaveDto;
 import de.ait.g_67_shop.dto.product.ProductUpdateDto;
-import de.ait.g_67_shop.exception.ProductNotFoundException;
+import de.ait.g_67_shop.exceptions.types.EntityNotFoundException;
 import de.ait.g_67_shop.repository.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
@@ -15,9 +15,12 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.Objects;
 
 // @Service говорит Spring:
+
 // "Этот класс относится к сервисному слою.
+
 // Создай объект этого класса сам
 // и сохрани его в Spring Context как Spring Bean".
 @Service
@@ -45,9 +48,10 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     // Этот метод будет вызваться в ProductController
     public ProductDto save(ProductSaveDto saveDto) {
+        Objects.requireNonNull(saveDto, "ProductSaveDto cannot be null");
         Product entity = mapper.mapDtoToEntity(saveDto);
         entity.setActive(true);
-        repository.save(entity);
+        repository.save(entity); // Здесь может возникать ошибка если валидация не проходит
         /*
         Не всегда стоит целиком логировать весь объект, так как
         он может быть очень большим.
@@ -79,40 +83,43 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getActiveEntityById(Long id) {
+        Objects.requireNonNull(id, "Product id cannot be null");
         return repository.findByIdAndActiveTrue(id).orElseThrow(
-                // Временная обработка ошибки до тех пор, пока
-                // не изучим соответствующую тему
-                () -> new ProductNotFoundException("Product with ID not found: " + id)
+                // Передача самого типа и id не найденного продукта
+                () -> new EntityNotFoundException(Product.class, id) // Customer может не существовать в базе
         );
     }
 
     @Override
     @Transactional
     public void update(Long id, ProductUpdateDto updateDto) {
-        BigDecimal newPrice = updateDto.getNewPrice();
-        repository.findById(id).ifPresent(x -> {
-            x.setPrice(newPrice);
-            logger.info("Product id {} updated, new price: {}", id, updateDto.getNewPrice());
-        });
+        Objects.requireNonNull(id, "Product id cannot be null");
+        Objects.requireNonNull(updateDto, "ProductUpdateDto cannot be null");
 
+        BigDecimal newPrice = updateDto.getNewPrice();
+        repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(Product.class, id))
+                .setPrice(newPrice);
+
+        logger.info("Product id {} updated, new price: {}", id, newPrice);
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-        repository.findByIdAndActiveTrue(id).ifPresent(x -> {
-            x.setActive(false);
-            logger.info("Product id {} marked as inactive", id);
-        });
+        getActiveEntityById(id).setActive(false);
+        logger.info("Product id {} marked as inactive", id);
     }
 
     @Override
     @Transactional
     public void restoreById(Long id) {
-        repository.findById(id).ifPresent(x -> {
-            x.setActive(true);
-            logger.info("Product id {} marked as active", id);
-        });
+        Objects.requireNonNull(id, "Product id cannot be null");
+        repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(Product.class, id))
+                .setActive(true);
+
+        logger.info("Product id {} marked as active", id);
     }
 
     @Override
@@ -145,3 +152,21 @@ public class ProductServiceImpl implements ProductService {
         );
     }
 }
+
+//        Метод принимает параметр?
+//        → проверь через Objects.requireNonNull, если null недопустим.
+//
+//        Метод ищет объект в базе?
+//        → используй orElseThrow с EntityNotFoundException.
+//
+//        Метод вызывает другой метод, который уже ищет и проверяет?
+//        → повторно не надо.
+
+//
+//        EntityUpdateException нужен для таких случаев:
+//
+//        Customer найден, но обновить нельзя.
+//        Product найден, но добавить нельзя.
+//        Quantity неправильный.
+//        Товара нет в корзине, а клиент хочет его удалить.
+//        Клиент хочет сделать запрещённое изменение.
